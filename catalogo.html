@@ -3,13 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Vacano Store - Inicio</title>
+    <title>Vacano Store - Catálogo Completo</title>
     <link rel="icon" href="imagenes/logo.ico" type="image/x-icon">
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 
     <link rel="stylesheet" href="css/global.css">
-    <link rel="stylesheet" href="css/index.css">
     <link rel="stylesheet" href="css/catalogo.css"> <script>
         (function() {
             const currentTheme = localStorage.getItem('theme');
@@ -29,10 +28,8 @@
             <nav class="main-nav">
                 <a href="index.html">Inicio</a>
                 <a href="catalogo.html">Catálogo</a>
-                <a href="#featured-products">Destacados</a>
-                <a href="#special-offers">Ofertas</a>
-                <a href="#about">Nosotros</a>
-                <a href="#contact">Contacto</a>
+                <a href="index.html#about">Nosotros</a>
+                <a href="index.html#contact">Contacto</a>
             </nav>
             <button id="themeToggle" class="theme-toggle" aria-label="Cambiar tema claro/oscuro">
                 <i class="fas fa-sun"></i> Modo Claro
@@ -44,54 +41,12 @@
     </header>
 
     <main>
-        <section class="hero">
-            <div class="container hero-content">
-                <h1>Tu Estilo, Tu Flow</h1>
-                <p>Gorras con diseños únicos, calidad premium y precios que te encantarán. Expresa tu personalidad con nuestros exclusivos estilos urbanos.</p>
-                <a href="catalogo.html" class="cta-button">
-                    Explorar Catálogo <i class="fas fa-arrow-right"></i>
-                </a>
-            </div>
-        </section>
-
-        <section id="featured-products" class="featured-collection">
+        <section class="catalogo-section">
             <div class="container">
-                <h2 class="section-title"><i class="fas fa-star"></i> Productos Destacados</h2>
-                <div class="collection-grid" id="featuredProductsGrid">
-                    <p style="text-align: center; color: var(--color-texto-secundario);">Cargando productos destacados...</p>
+                <h2 class="section-title"><i class="fas fa-hat-wizard"></i> Catálogo Completo de Gorras</h2>
+                <div class="catalogo-grid" id="allProductsGrid">
+                    <p style="text-align: center; color: var(--color-texto-secundario);">Cargando todos los productos...</p>
                 </div>
-            </div>
-        </section>
-
-        <section id="special-offers" class="special-offers">
-            <div class="container">
-                <h2 class="section-title"><i class="fas fa-tag"></i> Ofertas Especiales</h2>
-                <div class="offers-grid" id="offerProductsGrid">
-                    <p style="text-align: center; color: var(--color-texto-secundario);">Cargando ofertas especiales...</p>
-                </div>
-            </div>
-        </section>
-
-        <section id="about" class="about-section">
-            <div class="container about-content">
-                <h2 class="section-title"><i class="fas fa-info-circle"></i> Sobre Vacano Store</h2>
-                <p>En **Vacano Store**, creemos que una gorra es más que un accesorio: es una declaración de estilo. Nuestra pasión es ofrecerte diseños únicos y de alta calidad que te permitan expresar tu individualidad.</p>
-                <p>Desde estilos clásicos hasta las últimas tendencias, seleccionamos cada pieza para asegurarnos de que no solo luzcas bien, sino que también te sientas cómodo y confiado. Somos tu tienda online para la moda urbana en Venezuela.</p>
-            </div>
-        </section>
-
-        <section id="contact" class="contact-section">
-            <div class="container">
-                <h2 class="section-title"><i class="fas fa-headset"></i> Contáctanos</h2>
-                <p class="contact-intro">¿Tienes alguna pregunta o necesitas asistencia? Estamos aquí para ayudarte.</p>
-                <div class="contact-info">
-                    <p><i class="fas fa-phone"></i> Teléfono: <a href="tel:+584247337211">+58 424 7337211</a></p>
-                    <p><i class="fas fa-envelope"></i> Email: <a href="studiosdanielsve@gamil.com">studiosdanielsve@gamil.com</a></p>
-                    <p><i class="fas fa-map-marker-alt"></i> Dirección: San Cristóbal, Tachira, Venezuela</p>
-                </div>
-                <a href="https://wa.me/584247337211" target="_blank" class="contact-whatsapp-btn">
-                    <i class="fab fa-whatsapp"></i> Envíanos un WhatsApp
-                </a>
             </div>
         </section>
     </main>
@@ -107,14 +62,14 @@
                 <ul>
                     <li><a href="index.html">Inicio</a></li>
                     <li><a href="catalogo.html">Catálogo</a></li>
-                    <li><a href="#featured-products">Destacados</a></li>
-                    <li><a href="#special-offers">Ofertas</a></li>
+                    <li><a href="index.html#about">Nosotros</a></li>
+                    <li><a href="index.html#contact">Contacto</a></li>
                 </ul>
             </div>
             <div class="footer-col contact-footer">
                 <h3>Contacto</h3>
                 <p><i class="fas fa-phone"></i> +58 424 7337211</p>
-                <p><i class="fas fa-envelope"></i> studiosdanielsve@gamil.com</p>
+                <p><i class="fas fa-envelope"></i> studiosdanielsve@gmail.com</p>
                 <p><i class="fas fa-map-marker-alt"></i> San Cristóbal, Tachira</p>
                 <div class="social-links">
                     <a href="https://www.facebook.com/vacanostore.vzla" target="_blank" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
@@ -164,14 +119,13 @@
         <ul>
             <li><a href="index.html">Inicio</a></li>
             <li><a href="catalogo.html">Catálogo</a></li>
-            <li><a href="index.html#featured-products">Destacados</a></li>
-            <li><a href="index.html#special-offers">Ofertas</a></li>
+            <li><a href="index.html#about">Nosotros</a></li>
+            <li><a href="index.html#contact">Contacto</a></li>
         </ul>
         <button id="themeToggleMobile" class="theme-toggle" aria-label="Cambiar tema claro/oscuro">
             <i class="fas fa-sun"></i> Modo Claro
         </button>
     </div>
-
 
     <script src="js/script.js"></script>
     <script>
