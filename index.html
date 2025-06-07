@@ -5,18 +5,21 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Capitán Urbano - Gorras y Estilo Urbano</title>
     <link rel="stylesheet" href="style.css">
-    <link rel="preload" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
-    <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap"></noscript>
+    <link rel="preload" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap"></noscript>
     <meta name="description" content="Descubre Capitán Urbano, tu destino para gorras planas y accesorios de estilo urbano. Encuentra el diseño perfecto que define tu personalidad.">
     <meta name="keywords" content="gorras planas, gorras, accesorios, moda urbana, estilo, Capitán Urbano, tienda online, Venezuela, streetwear, urban, snapback, headwear">
     <link rel="icon" href="favicon.ico" type="image/x-icon">
 </head>
 <body>
 
-    <header class="header">
+    <header class="header" aria-label="Encabezado principal del sitio">
         <div class="container">
-            <div class="logo">Capitán <span class="highlight">Urbano</span></div>
-            <nav class="main-nav">
+            <div class="logo">
+                <a href="#" class="brand-name" aria-label="Capitán Urbano - Ir al inicio">Capitán Urbano</a>
+                <div class="brand-subtitle">Tienda Online</div>
+            </div>
+            <nav class="main-nav" aria-label="Navegación principal">
                 <a href="#productos">Productos</a>
                 <a href="#contacto">Contacto</a>
                 <a href="#ofertas">Ofertas</a>
@@ -25,73 +28,75 @@
         </div>
     </header>
 
-    <section class="hero">
-        <div class="hero-content">
-            <h2>Descubre tu Estilo Urbano</h2>
-            <p>Gorras planas con diseño, calidad y precios que te encantarán.</p>
-            <a href="#productos" class="cta-button">Explorar Gorras <i class="fas fa-arrow-right"></i></a>
-        </div>
-    </section>
-
-    <section id="productos" class="catalogo-section">
-        <div class="container">
-            <h2 class="section-title"><i class="fas fa-hat-wizard"></i> Nuestras Gorras</h2>
-            <div class="catalogo-grid" id="catalogoProductos">
-                <p>Cargando productos...</p>
+    <main>
+        <section class="hero" aria-labelledby="hero-title">
+            <div class="hero-content">
+                <h1 id="hero-title">Descubre tu Estilo Urbano</h1>
+                <p>Gorras planas con diseño único, calidad premium y precios que te encantarán. Expresa tu personalidad con nuestros exclusivos diseños urbanos.</p>
+                <a href="#productos" class="cta-button">Explorar Gorras <i class="fas fa-arrow-right"></i></a>
             </div>
-        </div>
-    </section>
+        </section>
 
-    <section class="featured-collection">
-        <div class="container">
-            <h2 class="section-title"><i class="fas fa-fire"></i> Colección Destacada</h2>
-            <p style="text-align: center; color: var(--color-texto-secundario); margin-bottom: 40px; font-size: 1.05rem;">
-                Las gorras más populares y los diseños más buscados de la temporada.
-            </p>
-            <div class="collection-grid" id="coleccionDestacadaGrid">
-                <p>Cargando colección destacada...</p>
+        <section id="productos" class="catalogo-section" aria-labelledby="catalogo-title">
+            <div class="container">
+                <h2 id="catalogo-title" class="section-title"><i class="fas fa-hat-wizard"></i> Nuestras Gorras</h2>
+                <div class="catalogo-grid" id="catalogoProductos">
+                    <p>Cargando productos...</p>
+                </div>
             </div>
-        </div>
-    </section>
+        </section>
 
-    <section id="ofertas" class="special-offers">
-        <div class="container">
-            <h2 class="section-title"><i class="fas fa-tag"></i> Ofertas Especiales</h2>
-            <p style="text-align: center; color: var(--color-texto-secundario); margin-bottom: 40px; font-size: 1.05rem;">
-                Aprovecha nuestros descuentos limitados en gorras seleccionadas.
-            </p>
-            <div class="offers-grid" id="ofertasEspecialesGrid">
-                <p>Cargando ofertas...</p>
+        <section class="featured-collection" aria-labelledby="featured-title">
+            <div class="container">
+                <h2 id="featured-title" class="section-title"><i class="fas fa-fire"></i> Colección Destacada</h2>
+                <p class="section-description">
+                    Las gorras más populares y los diseños más buscados de la temporada.
+                </p>
+                <div class="collection-grid" id="coleccionDestacadaGrid">
+                    <p>Cargando colección destacada...</p>
+                </div>
             </div>
-        </div>
-    </section>
+        </section>
 
-    <section id="nosotros" class="about-section">
-        <div class="container">
-            <h2 class="section-title"><i class="fas fa-info-circle"></i> Sobre Capitán Urbano</h2>
-            <div class="about-content">
-                <p>En **Capitán Urbano**, creemos que una gorra es más que un accesorio: es una declaración de estilo. Nuestra pasión es ofrecerte gorras planas únicas y de alta calidad que te permitan expresar tu individualidad y destacar en cualquier entorno urbano.</p>
-                <p>Desde diseños clásicos hasta las últimas tendencias, seleccionamos cuidadosamente cada pieza para asegurarnos de que no solo luzcas bien, sino que también te sientas cómodo y confiado. Somos una tienda online comprometida con la moda urbana y la satisfacción de nuestros clientes en Venezuela.</p>
-                <p>Únete a la tripulación de Capitán Urbano y encuentra la gorra perfecta que te impulse a liderar tu propio estilo.</p>
+        <section id="ofertas" class="special-offers" aria-labelledby="offers-title">
+            <div class="container">
+                <h2 id="offers-title" class="section-title"><i class="fas fa-tag"></i> Ofertas Especiales</h2>
+                <p class="section-description">
+                    Aprovecha nuestros descuentos limitados en gorras seleccionadas.
+                </p>
+                <div class="offers-grid" id="ofertasEspecialesGrid">
+                    <p>Cargando ofertas...</p>
+                </div>
             </div>
-        </div>
-    </section>
+        </section>
 
-    <section id="contacto" class="contact-section">
-        <div class="container">
-            <h2 class="section-title"><i class="fas fa-comments"></i> Contáctanos</h2>
-            <p class="contact-intro">¿Tienes alguna pregunta o necesitas ayuda con tu pedido? No dudes en contactarnos.</p>
-            <div class="contact-info">
-                <p><i class="fas fa-envelope"></i> info@capitanurbano.com</p>
-                <p><i class="fas fa-map-marker-alt"></i> San Cristóbal, Táchira, Venezuela</p>
+        <section id="nosotros" class="about-section" aria-labelledby="about-title">
+            <div class="container">
+                <h2 id="about-title" class="section-title"><i class="fas fa-info-circle"></i> Sobre Capitán Urbano</h2>
+                <div class="about-content">
+                    <p>En **Capitán Urbano**, creemos que una gorra es más que un accesorio: es una declaración de estilo. Nuestra pasión es ofrecerte gorras planas únicas y de alta calidad que te permitan expresar tu individualidad y destacar en cualquier entorno urbano.</p>
+                    <p>Desde diseños clásicos hasta las últimas tendencias, seleccionamos cuidadosamente cada pieza para asegurarnos de que no solo luzcas bien, sino que también te sientas cómodo y confiado. Somos una tienda online comprometida con la moda urbana y la satisfacción de nuestros clientes en Venezuela.</p>
+                    <p>Únete a la tripulación de Capitán Urbano y encuentra la gorra perfecta que te impulse a liderar tu propio estilo.</p>
+                </div>
             </div>
-            <a href="https://wa.me/584247337211" class="contact-whatsapp-btn" target="_blank">
-                <i class="fab fa-whatsapp"></i> Enviar Mensaje por WhatsApp
-            </a>
-        </div>
-    </section>
+        </section>
 
-    <footer class="footer">
+        <section id="contacto" class="contact-section" aria-labelledby="contact-title">
+            <div class="container">
+                <h2 id="contact-title" class="section-title"><i class="fas fa-comments"></i> Contáctanos</h2>
+                <p class="contact-intro">¿Tienes alguna pregunta o necesitas ayuda con tu pedido? No dudes en contactarnos.</p>
+                <div class="contact-info">
+                    <p><i class="fas fa-envelope"></i> <a href="mailto:info@capitanurbano.com">info@capitanurbano.com</a></p>
+                    <address><p><i class="fas fa-map-marker-alt"></i> San Cristóbal, Táchira, Venezuela</p></address>
+                </div>
+                <a href="https://wa.me/584247337211" class="contact-whatsapp-btn" target="_blank" rel="noopener noreferrer">
+                    <i class="fab fa-whatsapp"></i> Enviar Mensaje por WhatsApp
+                </a>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer" aria-label="Pie de página">
         <div class="container">
             <div class="footer-col">
                 <h3>Capitán Urbano</h3>
@@ -111,43 +116,52 @@
             <div class="footer-col">
                 <h3>Contacto</h3>
                 <div class="contact-footer">
-                    <p><i class="fas fa-phone-alt"></i> +58 424 7337211</p>
-                    <p><i class="fas fa-envelope"></i> info@capitanurbano.com</p>
-                    <p><i class="fas fa-map-marker-alt"></i> San Cristóbal, Táchira</p>
+                    <p><i class="fas fa-phone-alt"></i> <a href="tel:+584247337211">+58 424 7337211</a></p>
+                    <p><i class="fas fa-envelope"></i> <a href="mailto:info@capitanurbano.com">info@capitanurbano.com</a></p>
+                    <address><p><i class="fas fa-map-marker-alt"></i> San Cristóbal, Táchira</p></address>
                 </div>
             </div>
             <div class="footer-col">
                 <h3>Síguenos</h3>
                 <div class="social-links">
-                    <a href="https://www.instagram.com/capitan_urbano_vzla" target="_blank" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
-                    <a href="https://www.facebook.com/capitanurbano.vzla" target="_blank" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
-                    <a href="https://wa.me/584247337211" target="_blank" aria-label="WhatsApp"><i class="fab fa-whatsapp"></i></a>
+                    <a href="https://www.instagram.com/capitan_urbano_vzla" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
+                        <i class="fab fa-instagram"></i>
+                    </a>
+                    <a href="https://www.facebook.com/capitanurbano.vzla" target="_blank" rel="noopener noreferrer" aria-label="Facebook">
+                        <i class="fab fa-facebook-f"></i>
+                    </a>
+                    <a href="https://wa.me/584247337211" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp">
+                        <i class="fab fa-whatsapp"></i>
+                    </a>
                 </div>
             </div>
         </div>
         <div class="footer-bottom">
-            <p>&copy; 2025 Capitán Urbano. Todos los derechos reservados.</p>
+            <p>&copy; <span id="current-year"></span> Capitán Urbano. Todos los derechos reservados.</p>
         </div>
     </footer>
 
-    <a href="https://wa.me/584247337211" class="whatsapp-fab" target="_blank" aria-label="Contactar por WhatsApp">
+    <a href="https://wa.me/584247337211" class="whatsapp-fab" target="_blank" aria-label="Contactar por WhatsApp" rel="noopener noreferrer">
         <i class="fab fa-whatsapp"></i>
     </a>
 
-    <div id="modalProducto" class="modal">
+    <div id="modalProducto" class="modal" role="dialog" aria-modal="true" aria-labelledby="modal-nombre-producto">
         <div class="modal-contenido">
-            <span class="cerrar-modal">&times;</span>
+            <span class="cerrar-modal" role="button" aria-label="Cerrar ventana emergente">&times;</span>
             <div class="galeria-layout">
-                <img id="modal-imagen-principal" src="" alt="Producto Principal">
-                <div class="miniaturas-container">
+                <img id="modal-imagen-principal" src="" alt="Imagen principal del producto en la vista detallada">
+                <div class="miniaturas-container" role="group" aria-label="Miniaturas del producto">
                     </div>
             </div>
             <div class="modal-info-producto">
                 <h2 id="modal-nombre-producto"></h2>
                 <p id="modal-descripcion-producto"></p>
-                <p id="modal-precio-producto"></p>
+                <div class="product-price-details">
+                    <p id="modal-precio-producto"></p>
+                    <span id="modal-descuento-badge" class="descuento-badge-modal" style="display: none;"></span>
+                </div>
                 <p id="modal-stock-producto"></p>
-                <a href="#" class="whatsapp-modal-btn" target="_blank">
+                <a href="#" class="whatsapp-modal-btn" target="_blank" rel="noopener noreferrer">
                     <i class="fab fa-whatsapp"></i> Preguntar por WhatsApp
                 </a>
             </div>
@@ -155,6 +169,10 @@
     </div>
 
     <script src="https://kit.fontawesome.com/c6c0e5a9c9.js" crossorigin="anonymous"></script>
+    <script>
+        // Set current year dynamically for the footer
+        document.getElementById('current-year').textContent = new Date().getFullYear();
+    </script>
     <script src="script.js"></script>
 </body>
 </html>
