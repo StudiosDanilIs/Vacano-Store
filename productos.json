@@ -6,9 +6,9 @@
         "descripcion_corta": "El básico que nunca falla, ideal para cualquier outfit urbano. Ajuste perfecto.",
         "precio": 20.00,
         "imagenes": [
-            "3.jpeg",
-            "1.jpeg",
-            "4.jpeg"
+            "imagenes/3.jpeg",
+            "imagenes/1.jpeg",
+            "imagenes/4.jpeg"
         ],
         "stock": 15,
         "categoria": "clásicas",
@@ -22,7 +22,7 @@
         "descripcion_corta": "Estilo puro y limpio, un accesorio imprescindible para un look fresco.",
         "precio": 22.00,
         "imagenes": [
-            "3.jpeg"
+            "imagenes/3.jpeg"
         ],
         "stock": 10,
         "categoria": "minimalista",
@@ -36,7 +36,7 @@
         "descripcion_corta": "Confeccionada para el confort y el estilo en tus actividades diarias.",
         "precio": 25.00,
         "imagenes": [
-            "4.jpeg"
+            "imagenes/4.jpeg"
         ],
         "stock": 8,
         "categoria": "deportiva",
@@ -52,7 +52,7 @@
         "precioOriginal": 28.00,
         "descuento": 25,
         "imagenes": [
-            "2.jpeg"
+            "imagenes/2.jpeg"
         ],
         "stock": 5,
         "categoria": "oferta",
@@ -68,7 +68,7 @@
         "precioOriginal": 35.00,
         "descuento": 15,
         "imagenes": [
-            "2.jpeg"
+            "imagenes/2.jpeg"
         ],
         "stock": 7,
         "categoria": "oferta",
@@ -84,7 +84,7 @@
         "precioOriginal": 35.00,
         "descuento": 15,
         "imagenes": [
-            "2.jpeg"
+            "imagenes/2.jpeg"
         ],
         "stock": 7,
         "categoria": "oferta",
@@ -100,7 +100,7 @@
         "precioOriginal": 35.00,
         "descuento": 15,
         "imagenes": [
-            "ss.jpeg"
+            "imagenes/ss.jpeg"
         ],
         "stock": 7,
         "categoria": "oferta",
@@ -114,7 +114,7 @@
         "descripcion_corta": "Un estilo relajado para el día a día. Versátil y cómoda.",
         "precio": 18.00,
         "imagenes": [
-            "1.jpeg"
+            "imagenes/1.jpeg"
         ],
         "stock": 20,
         "categoria": "casual",
