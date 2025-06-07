@@ -284,9 +284,12 @@ document.addEventListener('DOMContentLoaded', () => {
         }
 
         // Renderizar para catalogo.html
-        if (path.includes('catalogo.html')) {
+        // ¡LA MODIFICACIÓN CLAVE ESTÁ AQUÍ!
+        // Ahora verifica si la ruta termina en '/catalogo' (URL limpia de Netlify)
+        // O si el elemento del catálogo (allProductsGrid) existe en la página.
+        if (path.endsWith('/catalogo') || document.getElementById('allProductsGrid')) {
             const allProductsGrid = document.getElementById('allProductsGrid');
-            if (allProductsGrid) {
+            if (allProductsGrid) { // Esta comprobación es importante
                 renderProducts(allProductsGrid, productsData, 'producto-card');
             }
         }
