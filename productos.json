@@ -76,6 +76,38 @@
         "enOferta": true
     },
     {
+        "id": "gorra-camuflaje-urbana",
+        "nombre": "Gorra Camuflaje Urbana",
+        "descripcion": "Perfecta para un look atrevido y moderno. Edición limitada. Su patrón de camuflaje te da un toque distintivo y urbano, ideal para combinar con tu ropa casual.",
+        "descripcion_corta": "Perfecta para un look atrevido y moderno. Edición limitada.",
+        "precio": 29.75,
+        "precioOriginal": 35.00,
+        "descuento": 15,
+        "imagenes": [
+            "2.jpeg"
+        ],
+        "stock": 7,
+        "categoria": "oferta",
+        "destacado": false,
+        "enOferta": true
+    },
+    {
+        "id": "gorra-camuflaje-urbana",
+        "nombre": "Gorra Camuflaje Urbana",
+        "descripcion": "Perfecta para un look atrevido y moderno. Edición limitada. Su patrón de camuflaje te da un toque distintivo y urbano, ideal para combinar con tu ropa casual.",
+        "descripcion_corta": "Perfecta para un look atrevido y moderno. Edición limitada.",
+        "precio": 29.75,
+        "precioOriginal": 35.00,
+        "descuento": 15,
+        "imagenes": [
+            "ss.jpeg"
+        ],
+        "stock": 7,
+        "categoria": "oferta",
+        "destacado": false,
+        "enOferta": true
+    },
+    {
         "id": "gorra-gris-casual",
         "nombre": "Gorra Gris Casual",
         "descripcion": "Un estilo relajado para el día a día. Versátil y cómoda, se adapta a cualquier ocasión. Confección robusta y un diseño limpio que nunca pasa de moda.",

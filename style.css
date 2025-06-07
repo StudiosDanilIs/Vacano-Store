@@ -137,7 +137,7 @@ body {
     left: 0;
     right: 0;
     bottom: 0;
-    background: 
+    background:
         radial-gradient(circle at 20% 80%, rgba(255, 107, 53, 0.1) 0%, transparent 50%),
         radial-gradient(circle at 80% 20%, rgba(0, 212, 255, 0.1) 0%, transparent 50%);
     pointer-events: none;
@@ -221,7 +221,7 @@ section {
 .catalogo-section,
 .featured-collection,
 .special-offers {
-    background-image: 
+    background-image:
         radial-gradient(circle, var(--color-gris-medio) 1px, transparent 1px);
     background-size: 20px 20px;
     background-position: 0 0, 10px 10px;
@@ -235,9 +235,10 @@ section {
     background-color: #fafbfc;
 }
 
+/* Reverted special-offers to its original, distinct background */
 .special-offers {
     background-color: #fff8f6;
-    background-image: 
+    background-image:
         radial-gradient(circle, rgba(255, 107, 53, 0.1) 1px, transparent 1px);
 }
 
@@ -610,6 +611,20 @@ section {
     opacity: 0.8;
 }
 
+/* Added styling for the 'Desarrollado' link in the footer */
+.footer-bottom a {
+    color: var(--color-blanco); /* Default color for visibility */
+    text-decoration: underline; /* Make it clear it's a link */
+    font-weight: 600;
+    transition: var(--transicion-rapida);
+}
+
+.footer-bottom a:hover {
+    color: var(--color-secundario); /* Change color on hover */
+    text-decoration: none; /* Remove underline on hover */
+}
+
+
 /* WhatsApp FAB optimizado */
 .whatsapp-fab {
     position: fixed;
@@ -676,11 +691,11 @@ section {
 }
 
 @keyframes slideIn {
-    from { 
+    from {
         transform: translateY(-50px);
         opacity: 0;
     }
-    to { 
+    to {
         transform: translateY(0);
         opacity: 1;
     }
