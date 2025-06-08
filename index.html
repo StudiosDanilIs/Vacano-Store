@@ -20,22 +20,14 @@
             --color-shadow: rgba(0, 0, 0, 0.1);
             --color-border: #e5e7eb;
             --color-button-hover: #e0e7ff; /* Un azul muy suave para hover */
-
-            /* Nuevas variables para el degradado del fondo */
-            --gradient-start: #1e3a8a; /* Un azul oscuro como el que ya tienes */
-            --gradient-mid: #3b82f6;    /* Un azul medio */
-            --gradient-end: #6366f1;    /* Un púrpura/azul más oscuro */
         }
 
         /* Estilos generales */
         body {
             margin: 0;
             font-family: 'Poppins', sans-serif;
-            /* CAMBIO CLAVE AQUÍ: Nuevo fondo degradado */
-            background: linear-gradient(135deg, var(--gradient-start), var(--gradient-mid), var(--gradient-end));
-            background-size: 400% 400%; /* Permite la animación de fondo */
-            animation: gradientAnimation 15s ease infinite; /* Animación para un fondo dinámico */
-            color: var(--color-text-dark); /* El color del texto principal en el contenedor */
+            background: #0B0D17; /* Fondo oscuro para resaltar las burbujas */
+            color: var(--color-text-dark);
             display: flex;
             justify-content: center;
             align-items: center;
@@ -43,14 +35,25 @@
             text-align: center;
             padding: 20px;
             box-sizing: border-box;
-            overflow: hidden; /* Oculta el scrollbar */
+            overflow: hidden; /* Para que las burbujas no creen scroll */
         }
 
-        /* Animación para el degradado del fondo */
-        @keyframes gradientAnimation {
-            0% { background-position: 0% 50%; }
-            50% { background-position: 100% 50%; }
-            100% { background-position: 0% 50%; }
+        /* Estilos de las burbujas */
+        .bubble {
+            position: absolute;
+            border-radius: 50%;
+            background-color: rgba(var(--r), var(--g), var(--b), 0.3); /* Color aleatorio semi-transparente */
+            animation: float 4s linear infinite;
+            z-index: -1;
+        }
+
+        @keyframes float {
+            0% {
+                transform: translateY(100vh) scale(0);
+            }
+            100% {
+                transform: translateY(-10vh) scale(1);
+            }
         }
 
         /* --- Estilos del Preloader --- */
@@ -60,15 +63,14 @@
             left: 0;
             width: 100%;
             height: 100%;
-            /* El preloader puede tener un degradado diferente si quieres, o el mismo del body */
-            background: linear-gradient(135deg, var(--color-primary-light), var(--color-secondary-light)); 
+            background: linear-gradient(135deg, var(--color-primary-light), var(--color-secondary-light));
             display: flex;
             flex-direction: column;
             justify-content: center;
             align-items: center;
             z-index: 9999;
             transition: opacity 0.7s ease-out;
-            color: white; /* Texto blanco sobre el degradado del preloader */
+            color: white;
             text-shadow: 0 1px 3px rgba(0,0,0,0.2);
         }
 
@@ -113,31 +115,13 @@
         .container {
             max-width: 700px;
             padding: 60px;
-            /* CAMBIO OPCIONAL: El contenedor ahora tiene un fondo blanco sólido para destacar sobre el degradado del body */
-            background-color: var(--color-bg-white); 
+            background-color: var(--color-bg-white);
             border-radius: 16px;
-            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.3); /* Sombra más pronunciada para pop-out */
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.3);
             animation: fadeIn 1s ease-out forwards;
             border: none;
             position: relative;
-            overflow: hidden;
-            z-index: 1; /* Asegurarse de que esté por encima del fondo */
-        }
-
-        /* Degradado sutil en el fondo del container - AHORA SOLO DECORATIVO SI EL FONDO DEL CONTAINER ES BLANCO */
-        .container::before {
-            content: '';
-            position: absolute;
-            top: -20px;
-            left: -20px;
-            right: -20px;
-            bottom: -20px;
-            /* Si el fondo del container es blanco, este efecto puede ser menos visible o innecesario */
-            background: linear-gradient(135deg, rgba(255,255,255,0.2), rgba(255,255,255,0.05)); /* Degradado más sutil o casi transparente */
-            z-index: -1;
-            filter: blur(20px);
-            opacity: 0.7;
-            border-radius: 20px;
+            z-index: 1;
         }
 
         @keyframes fadeIn {
@@ -149,7 +133,6 @@
             font-size: 3.5em;
             margin-bottom: 10px;
             font-weight: 800;
-            /* Mantiene el degradado de texto para el título */
             background-image: linear-gradient(45deg, var(--color-primary-dark), var(--color-primary-light), var(--color-secondary-dark));
             -webkit-background-clip: text;
             background-clip: text;
@@ -167,7 +150,7 @@
 
         h2 {
             font-size: 1.8em;
-            color: var(--color-text-light); /* Color gris medio para subtítulos */
+            color: var(--color-text-light);
             margin-top: 0px;
             margin-bottom: 50px;
             font-weight: 400;
@@ -179,7 +162,7 @@
             font-size: 1.25em;
             margin-bottom: 50px;
             line-height: 1.8;
-            color: var(--color-text-light); /* Color gris medio para párrafos */
+            color: var(--color-text-light);
             max-width: 450px;
             margin-left: auto;
             margin-right: auto;
@@ -204,7 +187,7 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            background-color: var(--color-bg-white); /* Botones blancos por defecto */
+            background-color: var(--color-bg-white);
             color: var(--color-primary-dark);
             padding: 18px 25px;
             border-radius: 10px;
@@ -295,7 +278,7 @@
         <div id="loading-icon-display"></div>
     </div>
 
-    <div class="container" id="main-content">
+    <div class="container" id="main-content" style="display: none;">
         <h1>Vacano Store</h1>
         <h2>Tu Tienda Online</h2>
         <p>Experimenta la moda sin límites. Selecciona tu país para explorar nuestro catálogo exclusivo y ofertas adaptadas a tu región.</p>
@@ -304,7 +287,7 @@
             <a href="peru/index.html"><span class="flag-emoji">🇵🇪</span>Perú</a>
         </div>
     </div>
-    
+
     <script>
         document.addEventListener('DOMContentLoaded', () => {
             const preloader = document.getElementById('preloader');
@@ -312,6 +295,37 @@
             const loadingRegion = document.getElementById('loading-region');
             const loadingIconDisplay = document.getElementById('loading-icon-display');
             const mainContent = document.getElementById('main-content');
+            const body = document.body;
+
+            // Función para generar un color aleatorio
+            function getRandomColor() {
+                const r = Math.floor(Math.random() * 256);
+                const g = Math.floor(Math.random() * 256);
+                const b = Math.floor(Math.random() * 256);
+                return { r, g, b };
+            }
+
+            // Crea las burbujas dinámicamente
+            function createBubbles(numBubbles) {
+                for (let i = 0; i < numBubbles; i++) {
+                    const bubble = document.createElement('div');
+                    bubble.classList.add('bubble');
+                    const size = Math.random() * 80 + 20; // Tamaño aleatorio entre 20px y 100px
+                    bubble.style.width = `${size}px`;
+                    bubble.style.height = `${size}px`;
+                    const startPosition = Math.random() * 100;
+                    bubble.style.left = `${startPosition}vw`;
+                    bubble.style.setProperty('--r', getRandomColor().r);
+                    bubble.style.setProperty('--g', getRandomColor().g);
+                    bubble.style.setProperty('--b', getRandomColor().b);
+                    bubble.style.animationDuration = `${Math.random() * 5 + 3}s`; // Duración aleatoria de la animación
+                    bubble.style.animationDelay = `${Math.random() * 2}s`; // Retraso aleatorio para escalonar las animaciones
+                    body.appendChild(bubble);
+                }
+            }
+
+            // Genera un número razonable de burbujas para el fondo
+            createBubbles(30);
 
             // Mapeo de códigos de país a URLs
             const countryRedirects = {
@@ -321,11 +335,11 @@
             };
 
             // Redirección por defecto si el país no está en la lista o la detección falla/es negada
-            const defaultRedirect = { 
-                url: 'venezuela/index.html', 
-                name: 'Venezuela (por defecto)', 
-                emoji: '🇻🇪' 
-            }; 
+            const defaultRedirect = {
+                url: 'venezuela/index.html',
+                name: 'Venezuela (por defecto)',
+                emoji: '🇻🇪'
+            };
 
             /**
              * Oculta el preloader y muestra el contenido principal.
@@ -365,11 +379,11 @@
                                 const nominatimUrl = `https://nominatim.openstreetmap.org/reverse?format=json&lat=${lat}&lon=${lon}&zoom=18&addressdetails=1`;
                                 const response = await fetch(nominatimUrl, {
                                     headers: {
-                                        // 'User-Agent': 'VacanoStore/1.0 (tu_email@ejemplo.com)' 
+                                        // 'User-Agent': 'VacanoStore/1.0 (tu_email@ejemplo.com)'
                                     }
                                 });
                                 const data = await response.json();
-                                
+
                                 if (data && data.address && data.address.country_code) {
                                     return resolve(data.address.country_code.toUpperCase());
                                 }
@@ -412,10 +426,10 @@
                 loadingIconDisplay.textContent = '📍';
 
                 const countryCode2Letter = await getUserGeolocationCountry();
-                console.log('Código de país detectado (2 letras):', countryCode2Letter); 
+                console.log('Código de país detectado (2 letras):', countryCode2Letter);
 
                 let target = null;
-                let finalCountryCode = null; 
+                let finalCountryCode = null;
 
                 if (countryCode2Letter === 'VE') {
                     finalCountryCode = 'VEN';
@@ -423,21 +437,23 @@
                     finalCountryCode = 'PER';
                 }
 
-                if (finalCountryCode && countryRedirects[finalCountryCode]) {
-                    target = countryRedirects[finalCountryCode];
+                if (finalCountryCode && countryRedirects.hasOwnProperty(finalCountryCode)) {
+                    target = countryRedirects[finalCountryCode]; // Acceder correctamente al objeto
                 } else {
-                    target = defaultRedirect; 
+                    target = defaultRedirect;
                 }
 
                 loadingText.textContent = 'Cargando...';
                 loadingRegion.textContent = `Redirigiendo a ${target.name}...`;
                 loadingIconDisplay.textContent = target.emoji;
 
+                // Redirige después de un breve retraso
                 setTimeout(() => {
                     window.location.href = target.url;
-                }, 2500); 
+                }, 2000); // 2 segundos para permitir que el usuario vea la información
             }
 
+            // Inicia la lógica de redirección solo después de que el DOM esté completamente cargado
             handleRedirection();
         });
     </script>
