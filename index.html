@@ -84,6 +84,15 @@
             font-size: 1.2em;
             font-weight: 300; /* Más ligero */
             opacity: 0.8;
+            display: flex; /* Para alinear el texto y el ícono */
+            align-items: center;
+            justify-content: center;
+        }
+
+        #loading-icon { /* Nuevo estilo para el icono dinámico */
+            font-size: 1.5em; /* Tamaño del icono */
+            margin-left: 10px; /* Espacio entre el texto y el icono */
+            line-height: 1;
         }
 
         /* --- Estilos del Contenido Principal --- */
@@ -265,7 +274,7 @@
         <div class="spinner"></div>
         <div id="loading-text">Cargando</div>
         <div id="loading-region">Detectando tu región...</div>
-    </div>
+        <div id="loading-icon-display"></div> </div>
 
     <div class="container" id="main-content">
         <h1>Vacano Store</h1>
@@ -279,93 +288,105 @@
     
     <script>
         document.addEventListener('DOMContentLoaded', () => {
-    const preloader = document.getElementById('preloader');
-    const loadingText = document.getElementById('loading-text');
-    const loadingRegion = document.getElementById('loading-region');
-    const mainContent = document.getElementById('main-content');
+            const preloader = document.getElementById('preloader');
+            const loadingText = document.getElementById('loading-text');
+            const loadingRegion = document.getElementById('loading-region');
+            const loadingIconDisplay = document.getElementById('loading-icon-display'); // Referencia al nuevo elemento
+            const mainContent = document.getElementById('main-content');
 
-    // Mapeo de códigos de país a URLs
-    const countryRedirects = {
-        'VE': { url: 'venezuela/index.html', name: 'Venezuela 🇻🇪' },
-        'PE': { url: 'peru/index.html', name: 'Perú 🇵🇪' },
-        // Puedes añadir más países aquí si lo deseas, por ejemplo:
-        // 'CO': { url: 'colombia/index.html', name: 'Colombia 🇨🇴' }
-    };
+            // Mapeo de códigos de país a URLs
+            const countryRedirects = {
+                'VE': { url: 'venezuela/index.html', name: 'Venezuela', emoji: '🇻🇪' },
+                'PE': { url: 'peru/index.html', name: 'Perú', emoji: '🇵🇪' },
+                // Añade más países si es necesario
+                // 'CO': { url: 'colombia/index.html', name: 'Colombia', emoji: '🇨🇴' }
+            };
 
-    // Redirección por defecto si el país no está en la lista o la detección falla
-    const defaultRedirect = countryRedirects['VE']; // ¡Venezuela sigue siendo el valor por defecto!
+            // Redirección por defecto si el país no está en la lista o la detección falla
+            const defaultRedirect = { 
+                url: 'venezuela/index.html', 
+                name: 'la tienda global', // Cambiado para el mensaje
+                emoji: '🌐' // Emoji del mundo para el default
+            }; 
 
-    /**
-     * Detecta la ubicación del usuario usando una API de geolocalización.
-     * @returns {Promise<string|null>} El código de país (ej. 'US', 'VE'), o null si falla.
-     */
-    async function getUserCountry() {
-        try {
-            const response = await fetch('http://ip-api.com/json/?fields=countryCode,country');
-            const data = await response.json();
-            if (data && data.countryCode) {
-                return data.countryCode;
+            /**
+             * Detecta la ubicación del usuario usando una API de geolocalización.
+             * @returns {Promise<string|null>} El código de país (ej. 'US', 'VE'), o null si falla.
+             */
+            async function getUserCountry() {
+                try {
+                    const response = await fetch('http://ip-api.com/json/?fields=countryCode,country');
+                    const data = await response.json();
+                    if (data && data.countryCode) {
+                        return data.countryCode;
+                    }
+                    return null;
+                } catch (error) {
+                    console.error('Error al obtener la ubicación:', error);
+                    return null;
+                }
             }
-            return null;
-        } catch (error) {
-            console.error('Error al obtener la ubicación:', error);
-            return null;
-        }
-    }
 
-    /**
-     * Oculta el preloader y muestra el contenido principal.
-     */
-    function hidePreloader() {
-        preloader.style.opacity = '0';
-        setTimeout(() => {
-            preloader.style.display = 'none';
-            mainContent.style.display = 'block';
-            document.body.style.overflow = ''; // Habilita el scroll de nuevo
-        }, 700); // Coincide con la duración de la transición de opacidad
-    }
+            /**
+             * Oculta el preloader y muestra el contenido principal.
+             */
+            function hidePreloader() {
+                preloader.style.opacity = '0';
+                setTimeout(() => {
+                    preloader.style.display = 'none';
+                    mainContent.style.display = 'block';
+                    document.body.style.overflow = ''; // Habilita el scroll de nuevo
+                }, 700); // Coincide con la duración de la transición de opacidad
+            }
 
-    /**
-     * Redirige al usuario o muestra la selección manual.
-     */
-    async function handleRedirection() {
-        const countryCode = await getUserCountry();
-        console.log('País detectado:', countryCode); // Para depuración
+            /**
+             * Redirige al usuario o muestra la selección manual.
+             */
+            async function handleRedirection() {
+                const countryCode = await getUserCountry();
+                console.log('País detectado:', countryCode); 
 
-        let target = null;
-        let isDefaultRedirect = false; // Bandera para saber si se usó la redirección por defecto
+                let target = null;
+                let isDefaultRedirect = false; 
 
-        if (countryCode && countryRedirects[countryCode]) {
-            // El país detectado está en nuestra lista
-            target = countryRedirects[countryCode];
-        } else {
-            // No se detectó el país, o no está en nuestra lista, usa la redirección por defecto
-            target = defaultRedirect;
-            isDefaultRedirect = true;
-        }
+                if (countryCode && countryRedirects[countryCode]) {
+                    target = countryRedirects[countryCode];
+                } else {
+                    target = defaultRedirect; 
+                    isDefaultRedirect = true;
+                }
 
-        // --- Lógica de mensajes y redirección ---
-        if (isDefaultRedirect) {
-            loadingText.textContent = '¡Hola!';
-            loadingRegion.textContent = 'No pudimos identificar tu región. Redirigiendo a la tienda global...';
-            // También puedes añadir un pequeño retraso para que el usuario lea esto
-            setTimeout(() => {
-                window.location.href = target.url;
-            }, 3000); // Redirige después de 3 segundos para que lea el mensaje
-        } else {
-            loadingText.textContent = 'Cargando...';
-            loadingRegion.textContent = `A la tienda de ${target.name}`;
-            
-            // Espera un momento para que el usuario vea el mensaje de redirección
-            setTimeout(() => {
-                window.location.href = target.url;
-            }, 2500); // Redirige después de 2.5 segundos
-        }
-    }
+                // Actualiza el texto y el icono dinámicamente
+                loadingText.textContent = 'Cargando...'; // Mensaje inicial
+                loadingRegion.textContent = `Redirigiendo a ${target.name}`;
+                loadingIconDisplay.textContent = target.emoji; // Muestra el emoji
+                loadingIconDisplay.className = 'loading-icon-display'; // Asegura la clase
 
-    // Inicia el proceso de redirección/carga
-    handleRedirection();
-});
+                // Si se va a redirigir automáticamente
+                // Este bloque de lógica decide cuándo redirigir y cuándo mostrar la selección manual
+                if (isDefaultRedirect) {
+                    loadingText.textContent = '¡Hola!';
+                    loadingRegion.textContent = 'No pudimos identificar tu región. Redirigiendo a la tienda global...';
+                    loadingIconDisplay.textContent = defaultRedirect.emoji; // Asegura el icono del mundo
+                    
+                    setTimeout(() => {
+                        window.location.href = target.url;
+                    }, 3000); 
+                } else {
+                    // Si detectamos un país específico y no es la opción por defecto
+                    loadingText.textContent = 'Cargando...';
+                    loadingRegion.textContent = `Redirigiendo a la tienda de ${target.name}`;
+                    loadingIconDisplay.textContent = target.emoji;
+                    
+                    setTimeout(() => {
+                        window.location.href = target.url;
+                    }, 2500); 
+                }
+            }
+
+            // Inicia el proceso de redirección/carga
+            handleRedirection();
+        });
     </script>
 </body>
 </html>
