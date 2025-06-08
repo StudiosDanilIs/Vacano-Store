@@ -15,19 +15,27 @@
             --color-secondary-light: #a78bfa; /* Púrpura más claro */
             --color-text-dark: #1f2937; /* Gris oscuro para texto principal */
             --color-text-light: #4b5563; /* Gris medio para texto secundario */
-            --color-bg-light: #f9fafb; /* Fondo muy claro */
+            --color-bg-light: #f9fafb; /* Fondo muy claro (para el contenedor si se usa) */
             --color-bg-white: #ffffff; /* Blanco puro */
             --color-shadow: rgba(0, 0, 0, 0.1);
             --color-border: #e5e7eb;
             --color-button-hover: #e0e7ff; /* Un azul muy suave para hover */
+
+            /* Nuevas variables para el degradado del fondo */
+            --gradient-start: #1e3a8a; /* Un azul oscuro como el que ya tienes */
+            --gradient-mid: #3b82f6;    /* Un azul medio */
+            --gradient-end: #6366f1;    /* Un púrpura/azul más oscuro */
         }
 
         /* Estilos generales */
         body {
             margin: 0;
-            font-family: 'Poppins', sans-serif; /* Cambiamos a Poppins, más versátil */
-            background-color: var(--color-bg-light);
-            color: var(--color-text-dark);
+            font-family: 'Poppins', sans-serif;
+            /* CAMBIO CLAVE AQUÍ: Nuevo fondo degradado */
+            background: linear-gradient(135deg, var(--gradient-start), var(--gradient-mid), var(--gradient-end));
+            background-size: 400% 400%; /* Permite la animación de fondo */
+            animation: gradientAnimation 15s ease infinite; /* Animación para un fondo dinámico */
+            color: var(--color-text-dark); /* El color del texto principal en el contenedor */
             display: flex;
             justify-content: center;
             align-items: center;
@@ -35,9 +43,14 @@
             text-align: center;
             padding: 20px;
             box-sizing: border-box;
-            background-image: radial-gradient(circle, rgba(0,0,0,0.05) 1px, transparent 1px);
-            background-size: 25px 25px; /* Puntos más grandes y espaciados */
-            overflow: hidden; /* Oculta el scrollbar mientras carga */
+            overflow: hidden; /* Oculta el scrollbar */
+        }
+
+        /* Animación para el degradado del fondo */
+        @keyframes gradientAnimation {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
         }
 
         /* --- Estilos del Preloader --- */
@@ -47,26 +60,27 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background: linear-gradient(135deg, var(--color-primary-light), var(--color-secondary-light)); /* Degradado en el fondo */
+            /* El preloader puede tener un degradado diferente si quieres, o el mismo del body */
+            background: linear-gradient(135deg, var(--color-primary-light), var(--color-secondary-light)); 
             display: flex;
             flex-direction: column;
             justify-content: center;
             align-items: center;
             z-index: 9999;
-            transition: opacity 0.7s ease-out; /* Transición más lenta */
-            color: white; /* Texto blanco sobre el degradado */
+            transition: opacity 0.7s ease-out;
+            color: white; /* Texto blanco sobre el degradado del preloader */
             text-shadow: 0 1px 3px rgba(0,0,0,0.2);
         }
 
         .spinner {
-            border: 8px solid rgba(255, 255, 255, 0.3); /* Borde claro */
-            border-top: 8px solid white; /* Parte superior blanca */
+            border: 8px solid rgba(255, 255, 255, 0.3);
+            border-top: 8px solid white;
             border-radius: 50%;
-            width: 70px; /* Más grande */
+            width: 70px;
             height: 70px;
-            animation: spin 1.2s cubic-bezier(0.5, 0, 0.5, 1) infinite; /* Animación más suave y rápida */
+            animation: spin 1.2s cubic-bezier(0.5, 0, 0.5, 1) infinite;
             margin-bottom: 25px;
-            box-shadow: 0 0 15px rgba(255,255,255,0.2); /* Sombra suave */
+            box-shadow: 0 0 15px rgba(255,255,255,0.2);
         }
 
         @keyframes spin {
@@ -75,40 +89,42 @@
         }
 
         #loading-text {
-            font-size: 1.8em; /* Texto más grande */
-            font-weight: 700; /* Más negrita */
+            font-size: 1.8em;
+            font-weight: 700;
             margin-bottom: 15px;
         }
 
         #loading-region {
             font-size: 1.2em;
-            font-weight: 300; /* Más ligero */
+            font-weight: 300;
             opacity: 0.8;
-            display: flex; /* Para alinear el texto y el ícono */
+            display: flex;
             align-items: center;
             justify-content: center;
         }
 
-        #loading-icon { /* Nuevo estilo para el icono dinámico */
-            font-size: 1.5em; /* Tamaño del icono */
-            margin-left: 10px; /* Espacio entre el texto y el icono */
+        #loading-icon-display {
+            font-size: 1.5em;
+            margin-left: 10px;
             line-height: 1;
         }
 
         /* --- Estilos del Contenido Principal --- */
         .container {
-            max-width: 700px; /* Un poco más ancho */
-            padding: 60px; /* Más padding */
-            background-color: var(--color-bg-white);
-            border-radius: 16px; /* Bordes más redondeados */
-            box-shadow: 0 10px 30px var(--color-shadow); /* Sombra más pronunciada */
-            animation: fadeIn 1s ease-out forwards; /* Asegura que se quede al final */
-            border: none; /* Quitamos el borde para un look más limpio */
-            position: relative; /* Para posibles efectos internos */
-            overflow: hidden; /* Para contener cualquier fondo de gradiente */
+            max-width: 700px;
+            padding: 60px;
+            /* CAMBIO OPCIONAL: El contenedor ahora tiene un fondo blanco sólido para destacar sobre el degradado del body */
+            background-color: var(--color-bg-white); 
+            border-radius: 16px;
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.3); /* Sombra más pronunciada para pop-out */
+            animation: fadeIn 1s ease-out forwards;
+            border: none;
+            position: relative;
+            overflow: hidden;
+            z-index: 1; /* Asegurarse de que esté por encima del fondo */
         }
 
-        /* Degradado sutil en el fondo del container */
+        /* Degradado sutil en el fondo del container - AHORA SOLO DECORATIVO SI EL FONDO DEL CONTAINER ES BLANCO */
         .container::before {
             content: '';
             position: absolute;
@@ -116,30 +132,32 @@
             left: -20px;
             right: -20px;
             bottom: -20px;
-            background: linear-gradient(135deg, rgba(255,255,255,0.8), rgba(255,255,255,0.5));
+            /* Si el fondo del container es blanco, este efecto puede ser menos visible o innecesario */
+            background: linear-gradient(135deg, rgba(255,255,255,0.2), rgba(255,255,255,0.05)); /* Degradado más sutil o casi transparente */
             z-index: -1;
             filter: blur(20px);
             opacity: 0.7;
-            border-radius: 20px; /* Más redondeado que el container */
+            border-radius: 20px;
         }
 
         @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(-30px); } /* Ligeramente más abajo al inicio */
+            from { opacity: 0; transform: translateY(-30px); }
             to { opacity: 1; transform: translateY(0); }
         }
 
         h1 {
-            font-size: 3.5em; /* Más grande y llamativo */
+            font-size: 3.5em;
             margin-bottom: 10px;
-            font-weight: 800; /* Extra negrita */
-            background-image: linear-gradient(45deg, var(--color-primary-dark), var(--color-primary-light), var(--color-secondary-dark)); /* Gradiente de 3 colores */
+            font-weight: 800;
+            /* Mantiene el degradado de texto para el título */
+            background-image: linear-gradient(45deg, var(--color-primary-dark), var(--color-primary-light), var(--color-secondary-dark));
             -webkit-background-clip: text;
             background-clip: text;
             color: transparent;
             display: inline-block;
-            letter-spacing: -1px; /* Ligeramente más ajustado */
+            letter-spacing: -1px;
             position: relative;
-            animation: textReveal 1s ease-out 0.5s forwards; /* Animación para el texto del título */
+            animation: textReveal 1s ease-out 0.5s forwards;
         }
 
         @keyframes textReveal {
@@ -148,33 +166,33 @@
         }
 
         h2 {
-            font-size: 1.8em; /* Más grande */
-            color: var(--color-text-light);
-            margin-top: 0px; /* Acercar a h1 */
-            margin-bottom: 50px; /* Más espacio antes del párrafo */
-            font-weight: 400; /* Más ligero */
+            font-size: 1.8em;
+            color: var(--color-text-light); /* Color gris medio para subtítulos */
+            margin-top: 0px;
+            margin-bottom: 50px;
+            font-weight: 400;
             letter-spacing: 0.5px;
             animation: textReveal 1s ease-out 0.7s forwards;
         }
 
         p {
-            font-size: 1.25em; /* Más grande */
-            margin-bottom: 50px; /* Más espacio */
-            line-height: 1.8; /* Más espaciado entre líneas */
-            color: var(--color-text-light);
-            max-width: 450px; /* Limita el ancho para mejor legibilidad */
+            font-size: 1.25em;
+            margin-bottom: 50px;
+            line-height: 1.8;
+            color: var(--color-text-light); /* Color gris medio para párrafos */
+            max-width: 450px;
             margin-left: auto;
             margin-right: auto;
             animation: textReveal 1s ease-out 0.9s forwards;
         }
 
         .country-selection {
-            display: grid; /* Usamos Grid para mejor control de layout */
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); /* Columnas responsivas */
-            gap: 20px; /* Espacio entre los botones */
-            margin-top: 30px; /* Un poco más de espacio */
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            margin-top: 30px;
             animation: buttonsFadeIn 1s ease-out 1.2s forwards;
-            opacity: 0; /* Oculto inicialmente para la animación */
+            opacity: 0;
         }
 
         @keyframes buttonsFadeIn {
@@ -183,21 +201,21 @@
         }
 
         .country-selection a {
-            display: flex; /* Flexbox para centrar contenido */
+            display: flex;
             align-items: center;
             justify-content: center;
-            background-color: var(--color-bg-white);
-            color: var(--color-primary-dark); /* Color más oscuro para el texto del botón */
-            padding: 18px 25px; /* Más padding */
-            border-radius: 10px; /* Bordes más redondeados */
+            background-color: var(--color-bg-white); /* Botones blancos por defecto */
+            color: var(--color-primary-dark);
+            padding: 18px 25px;
+            border-radius: 10px;
             text-decoration: none;
-            font-size: 1.15em; /* Ligeramente más grande */
+            font-size: 1.15em;
             font-weight: 600;
             transition: all 0.3s ease;
-            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.08); /* Sombra más suave pero presente */
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.08);
             border: 1px solid var(--color-border);
             position: relative;
-            overflow: hidden; /* Para el efecto de hover */
+            overflow: hidden;
         }
 
         .country-selection a::before {
@@ -207,7 +225,7 @@
             left: -100%;
             width: 100%;
             height: 100%;
-            background: linear-gradient(135deg, var(--color-primary-light), var(--color-secondary-light)); /* Gradiente al hacer hover */
+            background: linear-gradient(135deg, var(--color-primary-light), var(--color-secondary-light));
             transition: all 0.4s ease;
             z-index: -1;
             opacity: 0;
@@ -219,18 +237,18 @@
         }
 
         .country-selection a:hover {
-            color: white; /* Texto blanco al hacer hover */
-            transform: translateY(-8px); /* Elevación más pronunciada */
-            box-shadow: 0 12px 25px rgba(0, 0, 0, 0.2); /* Sombra más grande al hacer hover */
-            border-color: transparent; /* Quitar borde al hacer hover */
+            color: white;
+            transform: translateY(-8px);
+            box-shadow: 0 12px 25px rgba(0, 0, 0, 0.2);
+            border-color: transparent;
         }
 
         .country-selection a:hover .flag-emoji {
-            transform: scale(1.1); /* Ligeramente más grande al hacer hover */
+            transform: scale(1.1);
         }
 
         .flag-emoji {
-            font-size: 2.2em; /* Emoticono más grande */
+            font-size: 2.2em;
             margin-right: 15px;
             line-height: 1;
             transition: transform 0.3s ease;
@@ -239,7 +257,7 @@
         /* Medias queries para dispositivos móviles */
         @media (max-width: 768px) {
             .container {
-                padding: 40px 25px; /* Ajustar padding para móviles */
+                padding: 40px 25px;
             }
             h1 {
                 font-size: 2.5em;
@@ -254,7 +272,7 @@
                 margin-bottom: 35px;
             }
             .country-selection {
-                grid-template-columns: 1fr; /* Una columna en móviles */
+                grid-template-columns: 1fr;
                 gap: 15px;
             }
             .country-selection a {
@@ -274,7 +292,8 @@
         <div class="spinner"></div>
         <div id="loading-text">Cargando</div>
         <div id="loading-region">Detectando tu región...</div>
-        <div id="loading-icon-display"></div> </div>
+        <div id="loading-icon-display"></div>
+    </div>
 
     <div class="container" id="main-content">
         <h1>Vacano Store</h1>
@@ -283,7 +302,7 @@
         <div class="country-selection">
             <a href="venezuela/index.html"><span class="flag-emoji">🇻🇪</span>Venezuela</a>
             <a href="peru/index.html"><span class="flag-emoji">🇵🇪</span>Perú</a>
-            </div>
+        </div>
     </div>
     
     <script>
@@ -291,41 +310,22 @@
             const preloader = document.getElementById('preloader');
             const loadingText = document.getElementById('loading-text');
             const loadingRegion = document.getElementById('loading-region');
-            const loadingIconDisplay = document.getElementById('loading-icon-display'); // Referencia al nuevo elemento
+            const loadingIconDisplay = document.getElementById('loading-icon-display');
             const mainContent = document.getElementById('main-content');
 
             // Mapeo de códigos de país a URLs
             const countryRedirects = {
-                'VE': { url: 'venezuela/index.html', name: 'Venezuela', emoji: '🇻🇪' },
-                'PE': { url: 'peru/index.html', name: 'Perú', emoji: '🇵🇪' },
-                // Añade más países si es necesario
-                // 'CO': { url: 'colombia/index.html', name: 'Colombia', emoji: '🇨🇴' }
+                'VEN': { url: 'venezuela/index.html', name: 'Venezuela', emoji: '🇻🇪' },
+                'PER': { url: 'peru/index.html', name: 'Perú', emoji: '🇵🇪' },
+                // Añade más países si es necesario (usa el código de 3 letras del país)
             };
 
-            // Redirección por defecto si el país no está en la lista o la detección falla
+            // Redirección por defecto si el país no está en la lista o la detección falla/es negada
             const defaultRedirect = { 
                 url: 'venezuela/index.html', 
-                name: 'la tienda global', // Cambiado para el mensaje
-                emoji: '🌐' // Emoji del mundo para el default
+                name: 'Venezuela (por defecto)', 
+                emoji: '🇻🇪' 
             }; 
-
-            /**
-             * Detecta la ubicación del usuario usando una API de geolocalización.
-             * @returns {Promise<string|null>} El código de país (ej. 'US', 'VE'), o null si falla.
-             */
-            async function getUserCountry() {
-                try {
-                    const response = await fetch('http://ip-api.com/json/?fields=countryCode,country');
-                    const data = await response.json();
-                    if (data && data.countryCode) {
-                        return data.countryCode;
-                    }
-                    return null;
-                } catch (error) {
-                    console.error('Error al obtener la ubicación:', error);
-                    return null;
-                }
-            }
 
             /**
              * Oculta el preloader y muestra el contenido principal.
@@ -340,51 +340,104 @@
             }
 
             /**
+             * Obtiene la ubicación del usuario mediante la API de Geolocalización del navegador.
+             * @returns {Promise<string|null>} El código de país (ej. 'VEN', 'PER'), o null si falla o se deniega el permiso.
+             */
+            async function getUserGeolocationCountry() {
+                return new Promise(resolve => {
+                    if (!navigator.geolocation) {
+                        console.warn('Geolocalización no soportada por este navegador.');
+                        return resolve(null);
+                    }
+
+                    // Pide la ubicación del usuario
+                    navigator.geolocation.getCurrentPosition(
+                        async (position) => {
+                            const lat = position.coords.latitude;
+                            const lon = position.coords.longitude;
+                            console.log(`Ubicación obtenida: Lat ${lat}, Lon ${lon}`);
+
+                            try {
+                                // Usa Nominatim (OpenStreetMap) para geocodificación inversa
+                                // Se recomienda incluir un 'user-agent' o 'Referer' si es posible,
+                                // pero para una simple llamada en el cliente, esto suele ser suficiente.
+                                // Revisa la política de uso de Nominatim: https://operations.osmfoundation.org/policies/nominatim/
+                                const nominatimUrl = `https://nominatim.openstreetmap.org/reverse?format=json&lat=${lat}&lon=${lon}&zoom=18&addressdetails=1`;
+                                const response = await fetch(nominatimUrl, {
+                                    headers: {
+                                        // 'User-Agent': 'VacanoStore/1.0 (tu_email@ejemplo.com)' 
+                                    }
+                                });
+                                const data = await response.json();
+                                
+                                if (data && data.address && data.address.country_code) {
+                                    return resolve(data.address.country_code.toUpperCase());
+                                }
+                                console.warn('No se pudo obtener el código de país de Nominatim.');
+                                resolve(null);
+                            } catch (error) {
+                                console.error('Error al obtener el país de Nominatim:', error);
+                                resolve(null);
+                            }
+                        },
+                        (error) => {
+                            console.error('Error de geolocalización:', error.message);
+                            if (error.code === error.PERMISSION_DENIED) {
+                                console.warn('El usuario denegó el permiso de geolocalización.');
+                                loadingText.textContent = 'Permiso denegado.';
+                                loadingRegion.textContent = 'Redirigiendo a la tienda por defecto...';
+                                loadingIconDisplay.textContent = '🚫';
+                            } else {
+                                loadingText.textContent = 'Error al detectar.';
+                                loadingRegion.textContent = 'Redirigiendo a la tienda por defecto...';
+                                loadingIconDisplay.textContent = '⚠️';
+                            }
+                            resolve(null);
+                        },
+                        {
+                            enableHighAccuracy: false,
+                            timeout: 5000,
+                            maximumAge: 0
+                        }
+                    );
+                });
+            }
+
+            /**
              * Redirige al usuario o muestra la selección manual.
              */
             async function handleRedirection() {
-                const countryCode = await getUserCountry();
-                console.log('País detectado:', countryCode); 
+                loadingText.textContent = 'Cargando';
+                loadingRegion.textContent = 'Pidiendo permiso de ubicación...';
+                loadingIconDisplay.textContent = '📍';
+
+                const countryCode2Letter = await getUserGeolocationCountry();
+                console.log('Código de país detectado (2 letras):', countryCode2Letter); 
 
                 let target = null;
-                let isDefaultRedirect = false; 
+                let finalCountryCode = null; 
 
-                if (countryCode && countryRedirects[countryCode]) {
-                    target = countryRedirects[countryCode];
+                if (countryCode2Letter === 'VE') {
+                    finalCountryCode = 'VEN';
+                } else if (countryCode2Letter === 'PE') {
+                    finalCountryCode = 'PER';
+                }
+
+                if (finalCountryCode && countryRedirects[finalCountryCode]) {
+                    target = countryRedirects[finalCountryCode];
                 } else {
                     target = defaultRedirect; 
-                    isDefaultRedirect = true;
                 }
 
-                // Actualiza el texto y el icono dinámicamente
-                loadingText.textContent = 'Cargando...'; // Mensaje inicial
-                loadingRegion.textContent = `Redirigiendo a ${target.name}`;
-                loadingIconDisplay.textContent = target.emoji; // Muestra el emoji
-                loadingIconDisplay.className = 'loading-icon-display'; // Asegura la clase
+                loadingText.textContent = 'Cargando...';
+                loadingRegion.textContent = `Redirigiendo a ${target.name}...`;
+                loadingIconDisplay.textContent = target.emoji;
 
-                // Si se va a redirigir automáticamente
-                // Este bloque de lógica decide cuándo redirigir y cuándo mostrar la selección manual
-                if (isDefaultRedirect) {
-                    loadingText.textContent = '¡Hola!';
-                    loadingRegion.textContent = 'No pudimos identificar tu región. Redirigiendo a la tienda global...';
-                    loadingIconDisplay.textContent = defaultRedirect.emoji; // Asegura el icono del mundo
-                    
-                    setTimeout(() => {
-                        window.location.href = target.url;
-                    }, 3000); 
-                } else {
-                    // Si detectamos un país específico y no es la opción por defecto
-                    loadingText.textContent = 'Cargando...';
-                    loadingRegion.textContent = `Redirigiendo a la tienda de ${target.name}`;
-                    loadingIconDisplay.textContent = target.emoji;
-                    
-                    setTimeout(() => {
-                        window.location.href = target.url;
-                    }, 2500); 
-                }
+                setTimeout(() => {
+                    window.location.href = target.url;
+                }, 2500); 
             }
 
-            // Inicia el proceso de redirección/carga
             handleRedirection();
         });
     </script>

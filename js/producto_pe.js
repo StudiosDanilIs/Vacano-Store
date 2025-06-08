@@ -7,9 +7,9 @@ document.addEventListener('DOMContentLoaded', () => {
         "descripcion_corta": "El básico que nunca falla, ideal para cualquier outfit urbano. Ajuste perfecto.",
         "precio": 75.00, // Precio en soles
         "imagenes": [
-            "imagenes/3.jpeg",
-            "imagenes/1.jpeg",
-            "imagenes/4.jpeg"
+            "/imagenes/3.jpeg",
+            "/imagenes/1.jpeg",
+            "/imagenes/4.jpeg"
         ],
         "stock": 15,
         "categoria": "clásicas",
@@ -22,7 +22,7 @@ document.addEventListener('DOMContentLoaded', () => {
         "descripcion_corta": "Estilo puro y limpio, un accesorio imprescindible para un look fresco.",
         "precio": 80.00, // Precio en soles
         "imagenes": [
-            "imagenes/3.jpeg"
+            "/imagenes/3.jpeg"
         ],
         "stock": 10,
         "categoria": "minimalista",
@@ -35,7 +35,7 @@ document.addEventListener('DOMContentLoaded', () => {
         "descripcion_corta": "Confeccionada para el confort y el estilo en tus actividades diarias.",
         "precio": 90.00, // Precio en soles
         "imagenes": [
-            "imagenes/4.jpeg"
+            "/imagenes/4.jpeg"
         ],
         "stock": 8,
         "categoria": "deportiva",
@@ -50,7 +50,7 @@ document.addEventListener('DOMContentLoaded', () => {
         "precioOriginal": 105.00, // Precio en soles
         "descuento": 25,
         "imagenes": [
-            "imagenes/2.jpeg"
+            "/imagenes/2.jpeg"
         ],
         "stock": 5,
         "categoria": "oferta",
@@ -65,8 +65,8 @@ document.addEventListener('DOMContentLoaded', () => {
         "precioOriginal": 123.53, // Precio en soles
         "descuento": 15,
         "imagenes": [
-            "imagenes/2.jpeg",
-            "imagenes/ss.jpeg"
+            "/imagenes/2.jpeg",
+            "/imagenes/ss.jpeg"
         ],
         "stock": 7,
         "categoria": "oferta",
@@ -81,7 +81,7 @@ document.addEventListener('DOMContentLoaded', () => {
         "precioOriginal": 123.53, // Precio en soles
         "descuento": 15,
         "imagenes": [
-            "imagenes/2.jpeg"
+            "/imagenes/2.jpeg"
         ],
         "stock": 7,
         "categoria": "oferta",
@@ -96,7 +96,7 @@ document.addEventListener('DOMContentLoaded', () => {
         "precioOriginal": 123.53, // Precio en soles
         "descuento": 15,
         "imagenes": [
-            "imagenes/ss.jpeg"
+            "/imagenes/ss.jpeg"
         ],
         "stock": 7,
         "categoria": "oferta",
@@ -109,7 +109,7 @@ document.addEventListener('DOMContentLoaded', () => {
         "descripcion_corta": "Un estilo relajado para el día a día. Versátil y cómoda.",
         "precio": 65.00, // Precio en soles
         "imagenes": [
-            "imagenes/1.jpeg"
+            "/imagenes/1.jpeg"
         ],
         "stock": 20,
         "categoria": "casual",
@@ -122,7 +122,7 @@ document.addEventListener('DOMContentLoaded', () => {
         "descripcion_corta": "Estilo robusto y aventurero. Diseño duradero.",
         "precio": 95.00, // Precio en soles
         "imagenes": [
-            "imagenes/4.jpeg"
+            "/imagenes/4.jpeg"
         ],
         "stock": 12,
         "categoria": "militar",
@@ -135,7 +135,7 @@ document.addEventListener('DOMContentLoaded', () => {
         "descripcion_corta": "Toque suave y moderno. Ligera y transpirable.",
         "precio": 85.00, // Precio en soles
         "imagenes": [
-            "imagenes/3.jpeg"
+            "/imagenes/3.jpeg"
         ],
         "stock": 9,
         "categoria": "moda",
@@ -148,7 +148,7 @@ document.addEventListener('DOMContentLoaded', () => {
         "descripcion_corta": "Sofisticación en cada detalle. Casual chic.",
         "precio": 100.00, // Precio en soles
         "imagenes": [
-            "imagenes/1.jpeg"
+            "/imagenes/1.jpeg"
         ],
         "stock": 6,
         "categoria": "elegante",

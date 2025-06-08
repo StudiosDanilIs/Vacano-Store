@@ -1093,6 +1093,10 @@ body.light-mode .modal-contenido {
         display: none; /* Oculta la navegación de desktop y el botón de tema */
     }
 
+    #themeToggleMobile {
+        display: flex; /* Muestra el botón de tema en móviles */
+    }
+
     .hamburger-menu {
         display: block; /* Muestra el botón de hamburguesa */
     }
