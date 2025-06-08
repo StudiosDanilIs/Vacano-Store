@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -9,25 +10,49 @@
     <style>
         /* Definición de variables CSS para los colores */
         :root {
-            --color-primary-dark: #1e3a8a; /* Azul oscuro para un look moderno */
-            --color-primary-light: #3b82f6; /* Azul claro para acentos */
-            --color-secondary-dark: #6366f1; /* Púrpura sutil para degradados */
-            --color-secondary-light: #a78bfa; /* Púrpura más claro */
-            --color-text-dark: #1f2937; /* Gris oscuro para texto principal */
-            --color-text-light: #4b5563; /* Gris medio para texto secundario */
-            --color-bg-light: #f9fafb; /* Fondo muy claro (para el contenedor si se usa) */
-            --color-bg-white: #ffffff; /* Blanco puro */
-            --color-shadow: rgba(0, 0, 0, 0.1);
+            --color-primary-dark: #0a2463;
+            /* Azul oscuro más intenso */
+            --color-primary-light: #3e92cc;
+            /* Azul claro vibrante */
+            --color-secondary-dark: #1e3a8a;
+            /* Azul marino */
+            --color-secondary-light: #5e7ce2;
+            /* Azul eléctrico */
+            --color-accent: #00b4d8;
+            /* Azul turquesa para acentos */
+            --color-text-dark: #1f2937;
+            /* Gris oscuro para texto principal */
+            --color-text-light: #f8f9fa;
+            /* Blanco roto para texto claro */
+            --color-bg-light: #f9fafb;
+            /* Fondo muy claro */
+            --color-bg-white: #ffffff;
+            /* Blanco puro */
+            --color-shadow: rgba(0, 0, 0, 0.15);
             --color-border: #e5e7eb;
-            --color-button-hover: #e0e7ff; /* Un azul muy suave para hover */
+            --color-button-hover: #e0f2fe;
+            /* Azul muy suave para hover */
+
+            /* Nuevas variables para el degradado del fondo */
+            --gradient-start: #03045e;
+            --gradient-mid: #023e8a;
+            --gradient-end: #0077b6;
+            --gradient-accent: #00b4d8;
         }
 
         /* Estilos generales */
         body {
             margin: 0;
             font-family: 'Poppins', sans-serif;
-            background: #0B0D17; /* Fondo oscuro para resaltar las burbujas */
-            color: var(--color-text-dark);
+            /* Fondo animado con múltiples capas */
+            background: linear-gradient(-45deg,
+                    var(--gradient-start),
+                    var(--gradient-mid),
+                    var(--gradient-end),
+                    var(--gradient-accent));
+            background-size: 400% 400%;
+            animation: gradientAnimation 12s ease infinite;
+            color: var(--color-text-light);
             display: flex;
             justify-content: center;
             align-items: center;
@@ -35,24 +60,52 @@
             text-align: center;
             padding: 20px;
             box-sizing: border-box;
-            overflow: hidden; /* Para que las burbujas no creen scroll */
+            overflow: hidden;
+            position: relative;
         }
 
-        /* Estilos de las burbujas */
-        .bubble {
+        /* Efecto de partículas/burbujas para el fondo */
+        .particles {
             position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            z-index: 0;
+        }
+
+        .particle {
+            position: absolute;
+            background: rgba(255, 255, 255, 0.1);
             border-radius: 50%;
-            background-color: rgba(var(--r), var(--g), var(--b), 0.3); /* Color aleatorio semi-transparente */
-            animation: float 4s linear infinite;
-            z-index: -1;
+            animation: float linear infinite;
         }
 
         @keyframes float {
             0% {
-                transform: translateY(100vh) scale(0);
+                transform: translateY(0) rotate(0deg);
+                opacity: 1;
             }
+
             100% {
-                transform: translateY(-10vh) scale(1);
+                transform: translateY(-1000px) rotate(720deg);
+                opacity: 0;
+            }
+        }
+
+        /* Animación para el degradado del fondo */
+        @keyframes gradientAnimation {
+            0% {
+                background-position: 0% 50%;
+            }
+
+            50% {
+                background-position: 100% 50%;
+            }
+
+            100% {
+                background-position: 0% 50%;
             }
         }
 
@@ -63,7 +116,7 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background: linear-gradient(135deg, var(--color-primary-light), var(--color-secondary-light));
+            background: linear-gradient(135deg, var(--color-primary-dark), var(--color-secondary-dark));
             display: flex;
             flex-direction: column;
             justify-content: center;
@@ -71,23 +124,28 @@
             z-index: 9999;
             transition: opacity 0.7s ease-out;
             color: white;
-            text-shadow: 0 1px 3px rgba(0,0,0,0.2);
+            text-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
         }
 
         .spinner {
             border: 8px solid rgba(255, 255, 255, 0.3);
-            border-top: 8px solid white;
+            border-top: 8px solid var(--color-accent);
             border-radius: 50%;
             width: 70px;
             height: 70px;
             animation: spin 1.2s cubic-bezier(0.5, 0, 0.5, 1) infinite;
             margin-bottom: 25px;
-            box-shadow: 0 0 15px rgba(255,255,255,0.2);
+            box-shadow: 0 0 15px rgba(0, 180, 216, 0.3);
         }
 
         @keyframes spin {
-            0% { transform: rotate(0deg); }
-            100% { transform: rotate(360deg); }
+            0% {
+                transform: rotate(0deg);
+            }
+
+            100% {
+                transform: rotate(360deg);
+            }
         }
 
         #loading-text {
@@ -115,25 +173,72 @@
         .container {
             max-width: 700px;
             padding: 60px;
-            background-color: var(--color-bg-white);
+            background-color: rgba(255, 255, 255, 0.95);
             border-radius: 16px;
-            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.3);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.25);
             animation: fadeIn 1s ease-out forwards;
             border: none;
             position: relative;
+            overflow: hidden;
             z-index: 1;
+            backdrop-filter: blur(8px);
+            -webkit-backdrop-filter: blur(8px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        /* Efecto de borde luminoso */
+        .container::after {
+            content: '';
+            position: absolute;
+            top: -2px;
+            left: -2px;
+            right: -2px;
+            bottom: -2px;
+            background: linear-gradient(45deg,
+                    var(--color-accent),
+                    var(--color-primary-light),
+                    var(--color-secondary-light));
+            z-index: -1;
+            border-radius: 18px;
+            animation: borderGlow 3s linear infinite;
+            opacity: 0.7;
+            filter: blur(5px);
+        }
+
+        @keyframes borderGlow {
+            0% {
+                opacity: 0.5;
+            }
+
+            50% {
+                opacity: 0.8;
+            }
+
+            100% {
+                opacity: 0.5;
+            }
         }
 
         @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(-30px); }
-            to { opacity: 1; transform: translateY(0); }
+            from {
+                opacity: 0;
+                transform: translateY(-30px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
         }
 
         h1 {
             font-size: 3.5em;
             margin-bottom: 10px;
             font-weight: 800;
-            background-image: linear-gradient(45deg, var(--color-primary-dark), var(--color-primary-light), var(--color-secondary-dark));
+            background-image: linear-gradient(45deg,
+                    var(--color-primary-dark),
+                    var(--color-primary-light),
+                    var(--color-accent));
             -webkit-background-clip: text;
             background-clip: text;
             color: transparent;
@@ -144,13 +249,20 @@
         }
 
         @keyframes textReveal {
-            from { transform: translateY(20px); opacity: 0; }
-            to { transform: translateY(0); opacity: 1; }
+            from {
+                transform: translateY(20px);
+                opacity: 0;
+            }
+
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
         }
 
         h2 {
             font-size: 1.8em;
-            color: var(--color-text-light);
+            color: var(--color-primary-dark);
             margin-top: 0px;
             margin-bottom: 50px;
             font-weight: 400;
@@ -162,7 +274,7 @@
             font-size: 1.25em;
             margin-bottom: 50px;
             line-height: 1.8;
-            color: var(--color-text-light);
+            color: var(--color-text-dark);
             max-width: 450px;
             margin-left: auto;
             margin-right: auto;
@@ -179,8 +291,15 @@
         }
 
         @keyframes buttonsFadeIn {
-            from { opacity: 0; transform: translateY(30px); }
-            to { opacity: 1; transform: translateY(0); }
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
         }
 
         .country-selection a {
@@ -195,10 +314,11 @@
             font-size: 1.15em;
             font-weight: 600;
             transition: all 0.3s ease;
-            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.08);
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
             border: 1px solid var(--color-border);
             position: relative;
             overflow: hidden;
+            z-index: 1;
         }
 
         .country-selection a::before {
@@ -208,26 +328,26 @@
             left: -100%;
             width: 100%;
             height: 100%;
-            background: linear-gradient(135deg, var(--color-primary-light), var(--color-secondary-light));
+            background: linear-gradient(135deg,
+                    var(--color-primary-light),
+                    var(--color-accent));
             transition: all 0.4s ease;
             z-index: -1;
-            opacity: 0;
         }
 
         .country-selection a:hover::before {
             left: 0;
-            opacity: 1;
         }
 
         .country-selection a:hover {
             color: white;
-            transform: translateY(-8px);
+            transform: translateY(-5px);
             box-shadow: 0 12px 25px rgba(0, 0, 0, 0.2);
             border-color: transparent;
         }
 
         .country-selection a:hover .flag-emoji {
-            transform: scale(1.1);
+            transform: scale(1.1) rotate(5deg);
         }
 
         .flag-emoji {
@@ -241,28 +361,35 @@
         @media (max-width: 768px) {
             .container {
                 padding: 40px 25px;
+                width: 90%;
             }
+
             h1 {
                 font-size: 2.5em;
                 letter-spacing: 0;
             }
+
             h2 {
                 font-size: 1.4em;
                 margin-bottom: 35px;
             }
+
             p {
                 font-size: 1.05em;
                 margin-bottom: 35px;
             }
+
             .country-selection {
                 grid-template-columns: 1fr;
                 gap: 15px;
             }
+
             .country-selection a {
                 padding: 16px 20px;
                 font-size: 1.05em;
                 min-width: unset;
             }
+
             .flag-emoji {
                 font-size: 1.8em;
                 margin-right: 10px;
@@ -270,7 +397,11 @@
         }
     </style>
 </head>
+
 <body>
+    <!-- Partículas/burbujas para el fondo animado -->
+    <div class="particles" id="particles"></div>
+
     <div id="preloader">
         <div class="spinner"></div>
         <div id="loading-text">Cargando</div>
@@ -278,10 +409,11 @@
         <div id="loading-icon-display"></div>
     </div>
 
-    <div class="container" id="main-content" style="display: none;">
+    <div class="container" id="main-content">
         <h1>Vacano Store</h1>
         <h2>Tu Tienda Online</h2>
-        <p>Experimenta la moda sin límites. Selecciona tu país para explorar nuestro catálogo exclusivo y ofertas adaptadas a tu región.</p>
+        <p>Experimenta la moda sin límites. Selecciona tu país para explorar nuestro catálogo exclusivo y ofertas
+            adaptadas a tu región.</p>
         <div class="country-selection">
             <a href="venezuela/index.html"><span class="flag-emoji">🇻🇪</span>Venezuela</a>
             <a href="peru/index.html"><span class="flag-emoji">🇵🇪</span>Perú</a>
@@ -289,74 +421,69 @@
     </div>
 
     <script>
+        // Generador de partículas para el fondo
+        function createParticles() {
+            const particlesContainer = document.getElementById('particles');
+            const particleCount = 30;
+
+            for (let i = 0; i < particleCount; i++) {
+                const particle = document.createElement('div');
+                particle.classList.add('particle');
+
+                // Tamaño aleatorio entre 5px y 20px
+                const size = Math.random() * 15 + 5;
+                particle.style.width = `${size}px`;
+                particle.style.height = `${size}px`;
+
+                // Posición inicial aleatoria
+                particle.style.left = `${Math.random() * 100}%`;
+                particle.style.top = `${Math.random() * 100 + 100}%`;
+
+                // Opacidad aleatoria
+                particle.style.opacity = Math.random() * 0.5 + 0.1;
+
+                // Duración de animación aleatoria entre 10s y 30s
+                const duration = Math.random() * 20 + 10;
+                particle.style.animationDuration = `${duration}s`;
+
+                // Retraso inicial aleatorio
+                particle.style.animationDelay = `${Math.random() * 5}s`;
+
+                particlesContainer.appendChild(particle);
+            }
+        }
+
         document.addEventListener('DOMContentLoaded', () => {
+            createParticles();
+
             const preloader = document.getElementById('preloader');
             const loadingText = document.getElementById('loading-text');
             const loadingRegion = document.getElementById('loading-region');
             const loadingIconDisplay = document.getElementById('loading-icon-display');
             const mainContent = document.getElementById('main-content');
-            const body = document.body;
-
-            // Función para generar un color aleatorio
-            function getRandomColor() {
-                const r = Math.floor(Math.random() * 256);
-                const g = Math.floor(Math.random() * 256);
-                const b = Math.floor(Math.random() * 256);
-                return { r, g, b };
-            }
-
-            // Crea las burbujas dinámicamente
-            function createBubbles(numBubbles) {
-                for (let i = 0; i < numBubbles; i++) {
-                    const bubble = document.createElement('div');
-                    bubble.classList.add('bubble');
-                    const size = Math.random() * 80 + 20; // Tamaño aleatorio entre 20px y 100px
-                    bubble.style.width = `${size}px`;
-                    bubble.style.height = `${size}px`;
-                    const startPosition = Math.random() * 100;
-                    bubble.style.left = `${startPosition}vw`;
-                    bubble.style.setProperty('--r', getRandomColor().r);
-                    bubble.style.setProperty('--g', getRandomColor().g);
-                    bubble.style.setProperty('--b', getRandomColor().b);
-                    bubble.style.animationDuration = `${Math.random() * 5 + 3}s`; // Duración aleatoria de la animación
-                    bubble.style.animationDelay = `${Math.random() * 2}s`; // Retraso aleatorio para escalonar las animaciones
-                    body.appendChild(bubble);
-                }
-            }
-
-            // Genera un número razonable de burbujas para el fondo
-            createBubbles(30);
 
             // Mapeo de códigos de país a URLs
             const countryRedirects = {
                 'VEN': { url: 'venezuela/index.html', name: 'Venezuela', emoji: '🇻🇪' },
                 'PER': { url: 'peru/index.html', name: 'Perú', emoji: '🇵🇪' },
-                // Añade más países si es necesario (usa el código de 3 letras del país)
             };
 
-            // Redirección por defecto si el país no está en la lista o la detección falla/es negada
+            // Redirección por defecto
             const defaultRedirect = {
                 url: 'venezuela/index.html',
                 name: 'Venezuela (por defecto)',
                 emoji: '🇻🇪'
             };
 
-            /**
-             * Oculta el preloader y muestra el contenido principal.
-             */
             function hidePreloader() {
                 preloader.style.opacity = '0';
                 setTimeout(() => {
                     preloader.style.display = 'none';
                     mainContent.style.display = 'block';
-                    document.body.style.overflow = ''; // Habilita el scroll de nuevo
-                }, 700); // Coincide con la duración de la transición de opacidad
+                    document.body.style.overflow = '';
+                }, 700);
             }
 
-            /**
-             * Obtiene la ubicación del usuario mediante la API de Geolocalización del navegador.
-             * @returns {Promise<string|null>} El código de país (ej. 'VEN', 'PER'), o null si falla o se deniega el permiso.
-             */
             async function getUserGeolocationCountry() {
                 return new Promise(resolve => {
                     if (!navigator.geolocation) {
@@ -364,7 +491,6 @@
                         return resolve(null);
                     }
 
-                    // Pide la ubicación del usuario
                     navigator.geolocation.getCurrentPosition(
                         async (position) => {
                             const lat = position.coords.latitude;
@@ -372,16 +498,8 @@
                             console.log(`Ubicación obtenida: Lat ${lat}, Lon ${lon}`);
 
                             try {
-                                // Usa Nominatim (OpenStreetMap) para geocodificación inversa
-                                // Se recomienda incluir un 'user-agent' o 'Referer' si es posible,
-                                // pero para una simple llamada en el cliente, esto suele ser suficiente.
-                                // Revisa la política de uso de Nominatim: https://operations.osmfoundation.org/policies/nominatim/
                                 const nominatimUrl = `https://nominatim.openstreetmap.org/reverse?format=json&lat=${lat}&lon=${lon}&zoom=18&addressdetails=1`;
-                                const response = await fetch(nominatimUrl, {
-                                    headers: {
-                                        // 'User-Agent': 'VacanoStore/1.0 (tu_email@ejemplo.com)'
-                                    }
-                                });
+                                const response = await fetch(nominatimUrl);
                                 const data = await response.json();
 
                                 if (data && data.address && data.address.country_code) {
@@ -417,9 +535,6 @@
                 });
             }
 
-            /**
-             * Redirige al usuario o muestra la selección manual.
-             */
             async function handleRedirection() {
                 loadingText.textContent = 'Cargando';
                 loadingRegion.textContent = 'Pidiendo permiso de ubicación...';
@@ -437,8 +552,8 @@
                     finalCountryCode = 'PER';
                 }
 
-                if (finalCountryCode && countryRedirects.hasOwnProperty(finalCountryCode)) {
-                    target = countryRedirects[finalCountryCode]; // Acceder correctamente al objeto
+                if (finalCountryCode && countryRedirects[finalCountryCode]) {
+                    target = countryRedirects[finalCountryCode];
                 } else {
                     target = defaultRedirect;
                 }
@@ -447,15 +562,14 @@
                 loadingRegion.textContent = `Redirigiendo a ${target.name}...`;
                 loadingIconDisplay.textContent = target.emoji;
 
-                // Redirige después de un breve retraso
                 setTimeout(() => {
                     window.location.href = target.url;
-                }, 2000); // 2 segundos para permitir que el usuario vea la información
+                }, 4000);
             }
 
-            // Inicia la lógica de redirección solo después de que el DOM esté completamente cargado
             handleRedirection();
         });
     </script>
 </body>
+
 </html>

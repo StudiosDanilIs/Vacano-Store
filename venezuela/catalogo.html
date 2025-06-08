@@ -1,13 +1,16 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Explora el catálogo completo de Vacano Store: gorras modernas, clásicas, deportivas y de oferta. Encuentra la gorra perfecta para tu estilo.">
+    <meta name="description"
+        content="Explora el catálogo completo de Vacano Store: gorras modernas, clásicas, deportivas y de oferta. Encuentra la gorra perfecta para tu estilo.">
     <meta name="author" content="Studios Daniels">
 
     <meta property="og:title" content="Vacano Store - Catálogo Completo de Gorras">
-    <meta property="og:description" content="Explora el catálogo completo de Vacano Store: gorras modernas, clásicas, deportivas y de oferta. Encuentra la gorra perfecta para tu estilo.">
+    <meta property="og:description"
+        content="Explora el catálogo completo de Vacano Store: gorras modernas, clásicas, deportivas y de oferta. Encuentra la gorra perfecta para tu estilo.">
     <meta property="og:type" content="website">
     <meta property="og:url" content="URL_DE_TU_CATALOGO.html">
     <meta property="og:image" content="URL_DE_IMAGEN_DE_PREVISUALIZACION.jpg">
@@ -15,7 +18,8 @@
 
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="Vacano Store - Catálogo Completo de Gorras">
-    <meta name="twitter:description" content="Explora el catálogo completo de Vacano Store: gorras modernas, clásicas, deportivas y de oferta. Encuentra la gorra perfecta para tu estilo.">
+    <meta name="twitter:description"
+        content="Explora el catálogo completo de Vacano Store: gorras modernas, clásicas, deportivas y de oferta. Encuentra la gorra perfecta para tu estilo.">
     <meta name="twitter:image" content="URL_DE_IMAGEN_DE_PREVISUALIZACION.jpg">
     <title>Vacano Store - Catálogo Completo Venezuela</title>
     <link rel="icon" href="/imagenes/logo.ico" type="image/x-icon">
@@ -24,10 +28,10 @@
 
     <link rel="stylesheet" href="/css/global.css">
     <link rel="stylesheet" href="/css/catalogo.css">
-    <link rel="stylesheet" href="/css/moneda.css"> 
+    <link rel="stylesheet" href="/css/moneda.css">
 
     <script>
-        (function() {
+        (function () {
             const currentTheme = localStorage.getItem('theme');
             if (currentTheme === 'light-mode') {
                 document.documentElement.classList.add('light-mode');
@@ -35,6 +39,7 @@
         })();
     </script>
 </head>
+
 <body>
     <header class="header">
         <div class="container">
@@ -62,7 +67,8 @@
             <div class="container">
                 <h2 class="section-title"><i class="fas fa-hat-wizard"></i> Catálogo Completo de Gorras</h2>
                 <div class="catalogo-grid" id="allProductsGrid">
-                    <p style="text-align: center; color: var(--color-texto-secundario);">Cargando todos los productos...</p>
+                    <p style="text-align: center; color: var(--color-texto-secundario);">Cargando todos los productos...
+                    </p>
                 </div>
             </div>
         </section>
@@ -72,7 +78,8 @@
         <div class="container">
             <div class="footer-col">
                 <h3>Vacano Store</h3>
-                <p>Tu tienda online de gorras en Venezuela. Ofrecemos una amplia variedad de estilos y diseños únicos para que encuentres la gorra perfecta que se adapte a tu personalidad.</p>
+                <p>Tu tienda online de gorras en Venezuela. Ofrecemos una amplia variedad de estilos y diseños únicos
+                    para que encuentres la gorra perfecta que se adapte a tu personalidad.</p>
             </div>
             <div class="footer-col">
                 <h3>Enlaces Rápidos</h3>
@@ -89,14 +96,19 @@
                 <p><i class="fas fa-envelope"></i> studiosdanielsve@gmail.com</p>
                 <p><i class="fas fa-map-marker-alt"></i> San Cristóbal, Táchira</p>
                 <div class="social-links">
-                    <a href="https://www.facebook.com/vacanostore.vzla" target="_blank" aria-label="Visitar Facebook de Vacano Store"><i class="fab fa-facebook-f"></i></a>
-                    <a href="https://www.instagram.com/vacano_store_vzla" target="_blank" aria-label="Visitar Instagram de Vacano Store"><i class="fab fa-instagram"></i></a>
-                    <a href="https://wa.me/584247337211" target="_blank" aria-label="Contactar por WhatsApp"><i class="fab fa-whatsapp"></i></a>
+                    <a href="https://www.facebook.com/vacanostore.vzla" target="_blank"
+                        aria-label="Visitar Facebook de Vacano Store"><i class="fab fa-facebook-f"></i></a>
+                    <a href="https://www.instagram.com/vacano_store_vzla" target="_blank"
+                        aria-label="Visitar Instagram de Vacano Store"><i class="fab fa-instagram"></i></a>
+                    <a href="https://wa.me/584247337211" target="_blank" aria-label="Contactar por WhatsApp"><i
+                            class="fab fa-whatsapp"></i></a>
                 </div>
             </div>
         </div>
         <div class="footer-bottom">
-            <span>&copy; <span id="currentYear"></span> Vacano Store. Todos los derechos reservados. Desarrollado por <a href="https://github.com/StudiosDanilIs" target="_blank" rel="noopener noreferrer"><i class="fas fa-heart" style="color: red;"></i> Studios Daniels</a>.</span>
+            <span>&copy; <span id="currentYear"></span> Vacano Store. Todos los derechos reservados. Desarrollado por <a
+                    href="https://github.com/StudiosDanilIs" target="_blank" rel="noopener noreferrer"><i
+                        class="fas fa-heart" style="color: rgb(111, 28, 218);"></i> Studios Daniels</a>.</span>
         </div>
     </footer>
 
@@ -187,7 +199,7 @@
         const scrollToTopBtn = document.getElementById("scrollToTopBtn");
 
         // Muestra u oculta el botón de "volver arriba"
-        window.onscroll = function() {
+        window.onscroll = function () {
             if (document.body.scrollTop > 100 || document.documentElement.scrollTop > 100) {
                 scrollToTopBtn.style.display = "flex"; // Usa flex para centrar el icono
             } else {
@@ -196,7 +208,7 @@
         };
 
         // Función para volver arriba al hacer clic
-        scrollToTopBtn.addEventListener("click", function() {
+        scrollToTopBtn.addEventListener("click", function () {
             window.scrollTo({
                 top: 0,
                 behavior: "smooth"
@@ -204,4 +216,5 @@
         });
     </script>
 </body>
+
 </html>
