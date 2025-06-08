@@ -1,162 +1,7 @@
-document.addEventListener('DOMContentLoaded', () => {
-    // --- JSON de Productos ---
-    const productsData = [{
-        "id": "gorra-negra-clasica",
-        "nombre": "Gorra Negra Clásica",
-        "descripcion": "El básico que nunca falla, ideal para cualquier outfit urbano. Ajuste perfecto. Confeccionada con materiales de alta durabilidad y un diseño atemporal que combina con todo. Ideal para uso diario.",
-        "descripcion_corta": "El básico que nunca falla, ideal para cualquier outfit urbano. Ajuste perfecto.",
-        "precio": 20.00,
-        "imagenes": [
-            "imagenes/3.jpeg",
-            "imagenes/1.jpeg",
-            "imagenes/4.jpeg"
-        ],
-        "stock": 15,
-        "categoria": "clásicas",
-        "destacado": true,
-        "enOferta": false
-    }, {
-        "id": "gorra-blanca-minimalista",
-        "nombre": "Gorra Blanca Minimalista",
-        "descripcion": "Estilo puro y limpio, un accesorio imprescindible para un look fresco. Fabricada con algodón transpirable para máxima comodidad, perfecta para los días soleados.",
-        "descripcion_corta": "Estilo puro y limpio, un accesorio imprescindible para un look fresco.",
-        "precio": 22.00,
-        "imagenes": [
-            "imagenes/3.jpeg"
-        ],
-        "stock": 10,
-        "categoria": "minimalista",
-        "destacado": true,
-        "enOferta": false
-    }, {
-        "id": "gorra-azul-deportiva",
-        "nombre": "Gorra Azul Deportiva",
-        "descripcion": "Confeccionada para el confort y el estilo en tus actividades diarias. Material ligero y absorbe la humedad, ideal para entrenamientos o para un look casual y activo.",
-        "descripcion_corta": "Confeccionada para el confort y el estilo en tus actividades diarias.",
-        "precio": 25.00,
-        "imagenes": [
-            "imagenes/4.jpeg"
-        ],
-        "stock": 8,
-        "categoria": "deportiva",
-        "destacado": true,
-        "enOferta": false
-    }, {
-        "id": "gorra-roja-estilo-retro",
-        "nombre": "Gorra Roja Estilo Retro",
-        "descripcion": "Diseño vibrante con un toque retro. ¡Ideal para destacar! Fabricada con sarga de algodón de alta calidad y un ajuste snapback para mayor comodidad.",
-        "descripcion_corta": "Diseño vibrante con un toque retro. ¡Ideal para destacar!",
-        "precio": 21.00,
-        "precioOriginal": 28.00,
-        "descuento": 25,
-        "imagenes": [
-            "imagenes/2.jpeg"
-        ],
-        "stock": 5,
-        "categoria": "oferta",
-        "destacado": false,
-        "enOferta": true
-    }, {
-        "id": "gorra-camuflaje-urbana-v1",
-        "nombre": "Gorra Camuflaje Urbana V1",
-        "descripcion": "Perfecta para un look atrevido y moderno. Edición limitada. Su patrón de camuflaje te da un toque distintivo y urbano, ideal para combinar con tu ropa casual.",
-        "descripcion_corta": "Perfecta para un look atrevido y moderno. Edición limitada.",
-        "precio": 29.75,
-        "precioOriginal": 35.00,
-        "descuento": 15,
-        "imagenes": [
-            "imagenes/2.jpeg",
-            "imagenes/ss.jpeg"
-        ],
-        "stock": 7,
-        "categoria": "oferta",
-        "destacado": false,
-        "enOferta": true
-    }, {
-        "id": "gorra-camuflaje-urbana-v2",
-        "nombre": "Gorra Camuflaje Urbana V2",
-        "descripcion": "Perfecta para un look atrevido y moderno. Edición limitada. Su patrón de camuflaje te da un toque distintivo y urbano, ideal para combinar con tu ropa casual.",
-        "descripcion_corta": "Perfecta para un look atrevido y moderno. Edición limitada.",
-        "precio": 29.75,
-        "precioOriginal": 35.00,
-        "descuento": 15,
-        "imagenes": [
-            "imagenes/2.jpeg"
-        ],
-        "stock": 7,
-        "categoria": "oferta",
-        "destacado": false,
-        "enOferta": true
-    }, {
-        "id": "gorra-camuflaje-urbana-v3",
-        "nombre": "Gorra Camuflaje Urbana V3",
-        "descripcion": "Perfecta para un look atrevido y moderno. Edición limitada. Su patrón de camuflaje te da un toque distintivo y urbano, ideal para combinar con tu ropa casual.",
-        "descripcion_corta": "Perfecta para un look atrevido y moderno. Edición limitada.",
-        "precio": 29.75,
-        "precioOriginal": 35.00,
-        "descuento": 15,
-        "imagenes": [
-            "imagenes/ss.jpeg"
-        ],
-        "stock": 7,
-        "categoria": "oferta",
-        "destacado": false,
-        "enOferta": true
-    }, {
-        "id": "gorra-gris-casual",
-        "nombre": "Gorra Gris Casual",
-        "descripcion": "Un estilo relajado para el día a día. Versátil y cómoda, se adapta a cualquier ocasión. Confección robusta y un diseño limpio que nunca pasa de moda.",
-        "descripcion_corta": "Un estilo relajado para el día a día. Versátil y cómoda.",
-        "precio": 18.00,
-        "imagenes": [
-            "imagenes/1.jpeg"
-        ],
-        "stock": 20,
-        "categoria": "casual",
-        "destacado": false,
-        "enOferta": false
-    }, {
-        "id": "gorra-verde-militar",
-        "nombre": "Gorra Verde Militar",
-        "descripcion": "Ideal para un estilo robusto y aventurero. Diseño duradero y resistente. Perfecta para actividades al aire libre o para un toque urbano con carácter.",
-        "descripcion_corta": "Estilo robusto y aventurero. Diseño duradero.",
-        "precio": 26.00,
-        "imagenes": [
-            "imagenes/4.jpeg"
-        ],
-        "stock": 12,
-        "categoria": "militar",
-        "destacado": true,
-        "enOferta": false
-    }, {
-        "id": "gorra-rosa-pastel",
-        "nombre": "Gorra Rosa Pastel",
-        "descripcion": "Un toque suave y moderno para tu look. Material ligero y transpirable. Ideal para quienes buscan un estilo fresco y delicado.",
-        "descripcion_corta": "Toque suave y moderno. Ligera y transpirable.",
-        "precio": 23.00,
-        "imagenes": [
-            "imagenes/3.jpeg"
-        ],
-        "stock": 9,
-        "categoria": "moda",
-        "destacado": false,
-        "enOferta": false
-    }, {
-        "id": "gorra-beige-elegante",
-        "nombre": "Gorra Beige Elegante",
-        "descripcion": "Sofisticación en cada detalle, perfecta para un estilo casual chic. Tela de alta calidad y un ajuste cómodo, ideal para cualquier ocasión.",
-        "descripcion_corta": "Sofisticación en cada detalle. Casual chic.",
-        "precio": 28.00,
-        "imagenes": [
-            "imagenes/1.jpeg"
-        ],
-        "stock": 6,
-        "categoria": "elegante",
-        "destacado": false,
-        "enOferta": false
-    }];
+// js/common-functions.js
 
-    // --- Elementos del DOM Comunes ---
+document.addEventListener('DOMContentLoaded', () => {
+    // --- Elementos del DOM Comunes (Compartidos) ---
     const modalProducto = document.getElementById('productModal');
     const cerrarModalBtn = document.querySelector('.cerrar-modal');
     const modalImagenPrincipal = document.getElementById('modal-imagen-principal');
@@ -179,6 +24,27 @@ document.addEventListener('DOMContentLoaded', () => {
 
     const defaultImage = 'https://placehold.co/400x250/8892B0/0A192F?text=Imagen+No+Disp';
 
+    // Función para obtener los productos y la configuración regional
+    // Esta función será definida en products-ve.js o products-pe.js
+    let getRegionalConfig = () => {
+        console.error("getRegionalConfig no ha sido definida. Asegúrate de cargar el script regional.");
+        return {
+            products: [],
+            whatsappNumber: 'YOUR_DEFAULT_NUMBER', // Placeholder
+            currencySymbol: '$' // Placeholder
+        };
+    };
+
+    // Esto se ejecutará una vez que el script regional sea cargado
+    window.setRegionalConfig = (config) => {
+        getRegionalConfig = () => config;
+        loadContent(); // Recargar contenido con la nueva configuración
+        if (whatsappFab) {
+            whatsappFab.href = `https://wa.me/${config.whatsappNumber}`;
+        }
+    };
+
+
     // --- Funciones de Utilidad ---
 
     /**
@@ -188,18 +54,20 @@ document.addEventListener('DOMContentLoaded', () => {
      * @returns {string} HTML de la tarjeta de producto.
      */
     function createProductCardHTML(product, cardClass) {
+        const { currencySymbol } = getRegionalConfig();
+
         const imagenSrc = (product.imagenes && product.imagenes.length > 0) ?
             product.imagenes[0] :
             defaultImage;
 
-        let priceHTML = `<span class="precio">$${product.precio.toFixed(2)}</span>`;
+        let priceHTML = `<span class="precio">${currencySymbol}${product.precio.toFixed(2)}</span>`;
         let discountBadgeHTML = '';
 
         if (product.enOferta && product.precioOriginal && product.descuento) {
             priceHTML = `
                 <div class="price-container">
-                    <span class="original-price">$${product.precioOriginal.toFixed(2)}</span>
-                    <span class="discounted-price">$${product.precio.toFixed(2)}</span>
+                    <span class="original-price">${currencySymbol}${product.precioOriginal.toFixed(2)}</span>
+                    <span class="discounted-price">${currencySymbol}${product.precio.toFixed(2)}</span>
                 </div>
             `;
             discountBadgeHTML = `<div class="discount-badge">${product.descuento}% OFF</div>`;
@@ -248,6 +116,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // --- Carga y Renderizado de Contenido Dinámico ---
     function loadContent() {
+        const { products } = getRegionalConfig();
         const path = window.location.pathname;
 
         // Renderizar para index.html
@@ -256,12 +125,12 @@ document.addEventListener('DOMContentLoaded', () => {
             const offersGrid = document.getElementById('offerProductsGrid');
 
             if (featuredGrid) {
-                const featuredProducts = productsData.filter(p => p.destacado);
+                const featuredProducts = products.filter(p => p.destacado);
                 renderProducts(featuredGrid, featuredProducts, 'collection-card');
             }
 
             if (offersGrid) {
-                const offerProducts = productsData.filter(p => p.enOferta);
+                const offerProducts = products.filter(p => p.enOferta);
                 renderProducts(offersGrid, offerProducts, 'offer-card');
             }
         }
@@ -270,7 +139,7 @@ document.addEventListener('DOMContentLoaded', () => {
         if (path.endsWith('/catalogo') || document.getElementById('allProductsGrid')) {
             const allProductsGrid = document.getElementById('allProductsGrid');
             if (allProductsGrid) {
-                renderProducts(allProductsGrid, productsData, 'producto-card');
+                renderProducts(allProductsGrid, products, 'producto-card');
             }
         }
 
@@ -285,18 +154,22 @@ document.addEventListener('DOMContentLoaded', () => {
      * Se llama después de que las tarjetas de producto son renderizadas dinámicamente.
      */
     function attachModalEventListeners() {
+        const { products } = getRegionalConfig();
         document.querySelectorAll('.ver-detalles-btn').forEach(button => {
-            button.addEventListener('click', (event) => {
-                const productId = event.currentTarget.dataset.productId;
-                const selectedProduct = productsData.find(p => p.id === productId);
-
-                if (selectedProduct) {
-                    openModal(selectedProduct);
-                } else {
-                    console.warn(`Producto con ID ${productId} no encontrado.`);
-                }
-            });
+            button.removeEventListener('click', handleViewDetailsClick); // Evitar duplicados
+            button.addEventListener('click', handleViewDetailsClick);
         });
+
+        function handleViewDetailsClick(event) {
+            const productId = event.currentTarget.dataset.productId;
+            const selectedProduct = products.find(p => p.id === productId);
+
+            if (selectedProduct) {
+                openModal(selectedProduct);
+            } else {
+                console.warn(`Producto con ID ${productId} no encontrado.`);
+            }
+        }
     }
 
     /**
@@ -304,6 +177,8 @@ document.addEventListener('DOMContentLoaded', () => {
      * @param {Object} product - El objeto producto a mostrar.
      */
     function openModal(product) {
+        const { whatsappNumber, currencySymbol } = getRegionalConfig();
+
         modalImagenPrincipal.src = product.imagenes[0] || defaultImage;
         modalImagenPrincipal.alt = product.nombre;
 
@@ -330,21 +205,21 @@ document.addEventListener('DOMContentLoaded', () => {
         modalDescripcion.textContent = product.descripcion;
 
         if (product.enOferta && product.precioOriginal && product.descuento) {
-            modalPrecioOriginal.textContent = `$${product.precioOriginal.toFixed(2)}`;
+            modalPrecioOriginal.textContent = `${currencySymbol}${product.precioOriginal.toFixed(2)}`;
             modalPrecioOriginal.style.display = 'inline-block';
-            modalPrecioDescuento.textContent = `$${product.precio.toFixed(2)}`;
+            modalPrecioDescuento.textContent = `${currencySymbol}${product.precio.toFixed(2)}`;
             modalDescuentoBadge.textContent = `${product.descuento}% OFF`;
             modalDescuentoBadge.style.display = 'inline-block';
         } else {
             modalPrecioOriginal.style.display = 'none';
-            modalPrecioDescuento.textContent = `$${product.precio.toFixed(2)}`;
+            modalPrecioDescuento.textContent = `${currencySymbol}${product.precio.toFixed(2)}`;
             modalDescuentoBadge.style.display = 'none';
         }
 
         let whatsappMessage = '';
         let productPriceText = product.precio.toFixed(2);
         if (product.enOferta && product.precioOriginal) {
-            productPriceText = `${product.precio.toFixed(2)} (Antes $${product.precioOriginal.toFixed(2)}, ${product.descuento}% OFF)`;
+            productPriceText = `${product.precio.toFixed(2)} (Antes ${currencySymbol}${product.precioOriginal.toFixed(2)}, ${product.descuento}% OFF)`;
         }
 
         if (typeof product.stock === 'number') {
@@ -352,7 +227,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 whatsappModalBtn.textContent = 'Preguntar por WhatsApp';
                 whatsappModalBtn.classList.remove('disabled');
                 whatsappMessage = `Hola! Estoy interesado en la gorra "${product.nombre}" (ID: ${product.id}).`;
-                whatsappMessage += `\nSu precio es: $${productPriceText}.`;
+                whatsappMessage += `\nSu precio es: ${currencySymbol}${productPriceText}.`;
                 whatsappMessage += `\n¿Me podrías confirmar si está disponible y si tienen más fotos?`;
             } else {
                 whatsappModalBtn.textContent = 'Producto Agotado';
@@ -364,14 +239,14 @@ document.addEventListener('DOMContentLoaded', () => {
             whatsappModalBtn.textContent = 'Preguntar por WhatsApp';
             whatsappModalBtn.classList.remove('disabled');
             whatsappMessage = `Hola! Estoy interesado en la gorra "${product.nombre}" (ID: ${product.id}).`;
-            whatsappMessage += `\nSu precio es: $${productPriceText}.`;
+            whatsappMessage += `\nSu precio es: ${currencySymbol}${productPriceText}.`;
             whatsappMessage += `\n¿Podrías darme más información sobre este producto?`;
         }
 
         if (whatsappMessage) {
-            whatsappModalBtn.href = `https://wa.me/584247337211?text=${encodeURIComponent(whatsappMessage)}`;
+            whatsappModalBtn.href = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(whatsappMessage)}`;
         } else {
-            whatsappModalBtn.href = "https://wa.me/584247337211";
+            whatsappModalBtn.href = `https://wa.me/${whatsappNumber}`;
         }
 
         modalProducto.style.display = 'flex';
@@ -458,7 +333,6 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 
-
     // --- Funcionalidad de Scroll-to-top y ocultar/mostrar header ---
     let lastScrollY = 0;
     const scrollThreshold = 50;
@@ -495,12 +369,5 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-
-    // --- Configuración Inicial de Enlaces de WhatsApp FAB ---
-    if (whatsappFab) {
-        whatsappFab.href = `https://wa.me/584247337211`;
-    }
-
-    // Cargar el contenido cuando el DOM esté listo
-    loadContent();
+    // Initial load of content will happen once the regional script sets its config
 });

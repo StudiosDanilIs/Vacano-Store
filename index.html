@@ -3,188 +3,361 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Vacano Store: Tu tienda online de gorras con diseños únicos, calidad premium y ofertas especiales. ¡Encuentra tu estilo perfecto aquí!">
-    <meta name="author" content="Studios Daniels">
-
-    <meta property="og:title" content="Vacano Store - Tu Estilo, Tu Flow">
-    <meta property="og:description" content="Gorras con diseños únicos, calidad premium y precios que te encantarán. Expresa tu personalidad con nuestros exclusivos estilos urbanos.">
-    <meta property="og:type" content="website">
-    <meta property="og:url" content="URL_DE_TU_PAGINA_INICIO.html"> <meta property="og:image" content="URL_DE_IMAGEN_DE_PREVISUALIZACION.jpg"> <meta property="og:locale" content="es_VE">
-
-    <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="Vacano Store - Tu Estilo, Tu Flow">
-    <meta name="twitter:description" content="Gorras con diseños únicos, calidad premium y precios que te encantarán. Expresa tu personalidad con nuestros exclusivos estilos urbanos.">
-    <meta name="twitter:image" content="URL_DE_IMAGEN_DE_PREVISUALIZACION.jpg"> <title>Vacano Store - Inicio</title>
+    <title>Vacano Store | Selecciona tu País</title>
     <link rel="icon" href="imagenes/logo.ico" type="image/x-icon">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <style>
+        /* Definición de variables CSS para los colores */
+        :root {
+            --color-primary-dark: #1e3a8a; /* Azul oscuro para un look moderno */
+            --color-primary-light: #3b82f6; /* Azul claro para acentos */
+            --color-secondary-dark: #6366f1; /* Púrpura sutil para degradados */
+            --color-secondary-light: #a78bfa; /* Púrpura más claro */
+            --color-text-dark: #1f2937; /* Gris oscuro para texto principal */
+            --color-text-light: #4b5563; /* Gris medio para texto secundario */
+            --color-bg-light: #f9fafb; /* Fondo muy claro */
+            --color-bg-white: #ffffff; /* Blanco puro */
+            --color-shadow: rgba(0, 0, 0, 0.1);
+            --color-border: #e5e7eb;
+            --color-button-hover: #e0e7ff; /* Un azul muy suave para hover */
+        }
 
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+        /* Estilos generales */
+        body {
+            margin: 0;
+            font-family: 'Poppins', sans-serif; /* Cambiamos a Poppins, más versátil */
+            background-color: var(--color-bg-light);
+            color: var(--color-text-dark);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            text-align: center;
+            padding: 20px;
+            box-sizing: border-box;
+            background-image: radial-gradient(circle, rgba(0,0,0,0.05) 1px, transparent 1px);
+            background-size: 25px 25px; /* Puntos más grandes y espaciados */
+            overflow: hidden; /* Oculta el scrollbar mientras carga */
+        }
 
-    <link rel="stylesheet" href="css/global.css">
-    <link rel="stylesheet" href="css/index.css">
-    <link rel="stylesheet" href="css/catalogo.css"> <script>
-        (function() {
-            const currentTheme = localStorage.getItem('theme');
-            if (currentTheme === 'light-mode') {
-                document.documentElement.classList.add('light-mode');
+        /* --- Estilos del Preloader --- */
+        #preloader {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, var(--color-primary-light), var(--color-secondary-light)); /* Degradado en el fondo */
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            z-index: 9999;
+            transition: opacity 0.7s ease-out; /* Transición más lenta */
+            color: white; /* Texto blanco sobre el degradado */
+            text-shadow: 0 1px 3px rgba(0,0,0,0.2);
+        }
+
+        .spinner {
+            border: 8px solid rgba(255, 255, 255, 0.3); /* Borde claro */
+            border-top: 8px solid white; /* Parte superior blanca */
+            border-radius: 50%;
+            width: 70px; /* Más grande */
+            height: 70px;
+            animation: spin 1.2s cubic-bezier(0.5, 0, 0.5, 1) infinite; /* Animación más suave y rápida */
+            margin-bottom: 25px;
+            box-shadow: 0 0 15px rgba(255,255,255,0.2); /* Sombra suave */
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        #loading-text {
+            font-size: 1.8em; /* Texto más grande */
+            font-weight: 700; /* Más negrita */
+            margin-bottom: 15px;
+        }
+
+        #loading-region {
+            font-size: 1.2em;
+            font-weight: 300; /* Más ligero */
+            opacity: 0.8;
+        }
+
+        /* --- Estilos del Contenido Principal --- */
+        .container {
+            max-width: 700px; /* Un poco más ancho */
+            padding: 60px; /* Más padding */
+            background-color: var(--color-bg-white);
+            border-radius: 16px; /* Bordes más redondeados */
+            box-shadow: 0 10px 30px var(--color-shadow); /* Sombra más pronunciada */
+            animation: fadeIn 1s ease-out forwards; /* Asegura que se quede al final */
+            border: none; /* Quitamos el borde para un look más limpio */
+            position: relative; /* Para posibles efectos internos */
+            overflow: hidden; /* Para contener cualquier fondo de gradiente */
+        }
+
+        /* Degradado sutil en el fondo del container */
+        .container::before {
+            content: '';
+            position: absolute;
+            top: -20px;
+            left: -20px;
+            right: -20px;
+            bottom: -20px;
+            background: linear-gradient(135deg, rgba(255,255,255,0.8), rgba(255,255,255,0.5));
+            z-index: -1;
+            filter: blur(20px);
+            opacity: 0.7;
+            border-radius: 20px; /* Más redondeado que el container */
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(-30px); } /* Ligeramente más abajo al inicio */
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        h1 {
+            font-size: 3.5em; /* Más grande y llamativo */
+            margin-bottom: 10px;
+            font-weight: 800; /* Extra negrita */
+            background-image: linear-gradient(45deg, var(--color-primary-dark), var(--color-primary-light), var(--color-secondary-dark)); /* Gradiente de 3 colores */
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            display: inline-block;
+            letter-spacing: -1px; /* Ligeramente más ajustado */
+            position: relative;
+            animation: textReveal 1s ease-out 0.5s forwards; /* Animación para el texto del título */
+        }
+
+        @keyframes textReveal {
+            from { transform: translateY(20px); opacity: 0; }
+            to { transform: translateY(0); opacity: 1; }
+        }
+
+        h2 {
+            font-size: 1.8em; /* Más grande */
+            color: var(--color-text-light);
+            margin-top: 0px; /* Acercar a h1 */
+            margin-bottom: 50px; /* Más espacio antes del párrafo */
+            font-weight: 400; /* Más ligero */
+            letter-spacing: 0.5px;
+            animation: textReveal 1s ease-out 0.7s forwards;
+        }
+
+        p {
+            font-size: 1.25em; /* Más grande */
+            margin-bottom: 50px; /* Más espacio */
+            line-height: 1.8; /* Más espaciado entre líneas */
+            color: var(--color-text-light);
+            max-width: 450px; /* Limita el ancho para mejor legibilidad */
+            margin-left: auto;
+            margin-right: auto;
+            animation: textReveal 1s ease-out 0.9s forwards;
+        }
+
+        .country-selection {
+            display: grid; /* Usamos Grid para mejor control de layout */
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); /* Columnas responsivas */
+            gap: 20px; /* Espacio entre los botones */
+            margin-top: 30px; /* Un poco más de espacio */
+            animation: buttonsFadeIn 1s ease-out 1.2s forwards;
+            opacity: 0; /* Oculto inicialmente para la animación */
+        }
+
+        @keyframes buttonsFadeIn {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .country-selection a {
+            display: flex; /* Flexbox para centrar contenido */
+            align-items: center;
+            justify-content: center;
+            background-color: var(--color-bg-white);
+            color: var(--color-primary-dark); /* Color más oscuro para el texto del botón */
+            padding: 18px 25px; /* Más padding */
+            border-radius: 10px; /* Bordes más redondeados */
+            text-decoration: none;
+            font-size: 1.15em; /* Ligeramente más grande */
+            font-weight: 600;
+            transition: all 0.3s ease;
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.08); /* Sombra más suave pero presente */
+            border: 1px solid var(--color-border);
+            position: relative;
+            overflow: hidden; /* Para el efecto de hover */
+        }
+
+        .country-selection a::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, var(--color-primary-light), var(--color-secondary-light)); /* Gradiente al hacer hover */
+            transition: all 0.4s ease;
+            z-index: -1;
+            opacity: 0;
+        }
+
+        .country-selection a:hover::before {
+            left: 0;
+            opacity: 1;
+        }
+
+        .country-selection a:hover {
+            color: white; /* Texto blanco al hacer hover */
+            transform: translateY(-8px); /* Elevación más pronunciada */
+            box-shadow: 0 12px 25px rgba(0, 0, 0, 0.2); /* Sombra más grande al hacer hover */
+            border-color: transparent; /* Quitar borde al hacer hover */
+        }
+
+        .country-selection a:hover .flag-emoji {
+            transform: scale(1.1); /* Ligeramente más grande al hacer hover */
+        }
+
+        .flag-emoji {
+            font-size: 2.2em; /* Emoticono más grande */
+            margin-right: 15px;
+            line-height: 1;
+            transition: transform 0.3s ease;
+        }
+
+        /* Medias queries para dispositivos móviles */
+        @media (max-width: 768px) {
+            .container {
+                padding: 40px 25px; /* Ajustar padding para móviles */
             }
-        })();
-    </script>
+            h1 {
+                font-size: 2.5em;
+                letter-spacing: 0;
+            }
+            h2 {
+                font-size: 1.4em;
+                margin-bottom: 35px;
+            }
+            p {
+                font-size: 1.05em;
+                margin-bottom: 35px;
+            }
+            .country-selection {
+                grid-template-columns: 1fr; /* Una columna en móviles */
+                gap: 15px;
+            }
+            .country-selection a {
+                padding: 16px 20px;
+                font-size: 1.05em;
+                min-width: unset;
+            }
+            .flag-emoji {
+                font-size: 1.8em;
+                margin-right: 10px;
+            }
+        }
+    </style>
 </head>
 <body>
-    <header class="header">
-        <div class="container">
-            <div class="logo">
-                <a href="index.html" class="brand-name" aria-label="Ir a la página de inicio">Vacano Store</a>
-                <span class="brand-subtitle">Tienda Online</span>
-            </div>
-            <nav class="main-nav">
-                <a href="index.html">Inicio</a>
-                <a href="catalogo.html">Catálogo</a>
-                <a href="#about">Nosotros</a>
-                <a href="#contact">Contacto</a>
-            </nav>
-            <button id="themeToggle" class="theme-toggle" aria-label="Cambiar tema claro/oscuro">
-                <i class="fas fa-sun"></i> Modo Claro
-            </button>
-            <button id="hamburgerMenu" class="hamburger-menu" aria-label="Abrir menú de navegación móvil">
-                <i class="fas fa-bars"></i>
-            </button>
-        </div>
-    </header>
-
-    <main>
-        <section class="hero">
-            <div class="container hero-content">
-                <h1>Tu Estilo, Tu Flow</h1>
-                <p>Gorras con diseños únicos, calidad premium y precios que te encantarán. Expresa tu personalidad con nuestros exclusivos estilos urbanos.</p>
-                <a href="catalogo.html" class="cta-button" aria-label="Explorar todo el catálogo de gorras">
-                    Explorar Catálogo <i class="fas fa-arrow-right"></i>
-                </a>
-            </div>
-        </section>
-
-        <section id="featured-products" class="featured-collection">
-            <div class="container">
-                <h2 class="section-title"><i class="fas fa-star"></i> Productos Destacados</h2>
-                <div class="collection-grid" id="featuredProductsGrid">
-                    <p style="text-align: center; color: var(--color-texto-secundario);">Cargando productos destacados...</p>
-                </div>
-            </div>
-        </section>
-
-        <section id="special-offers" class="special-offers">
-            <div class="container">
-                <h2 class="section-title"><i class="fas fa-tag"></i> Ofertas Especiales</h2>
-                <div class="offers-grid" id="offerProductsGrid">
-                    <p style="text-align: center; color: var(--color-texto-secundario);">Cargando ofertas especiales...</p>
-                </div>
-            </div>
-        </section>
-
-        <section id="about" class="about-section">
-            <div class="container about-content">
-                <h2 class="section-title"><i class="fas fa-info-circle"></i> Sobre Vacano Store</h2>
-                <p>En **Vacano Store**, creemos que una gorra es más que un accesorio: es una declaración de estilo. Nuestra pasión es ofrecerte diseños únicos y de alta calidad que te permitan expresar tu individualidad.</p>
-                <p>Desde estilos clásicos hasta las últimas tendencias, seleccionamos cada pieza para asegurarnos de que no solo luzcas bien, sino que también te sientas cómodo y confiado. Somos tu tienda online para la moda urbana en Venezuela.</p>
-            </div>
-        </section>
-
-        <section id="contact" class="contact-section">
-            <div class="container">
-                <h2 class="section-title"><i class="fas fa-headset"></i> Contáctanos</h2>
-                <p class="contact-intro">¿Tienes alguna pregunta o necesitas asistencia? Estamos aquí para ayudarte.</p>
-                <div class="contact-info">
-                    <p><i class="fas fa-phone"></i> Teléfono: <a href="tel:+584247337211" aria-label="Llamar a Vacano Store">+58 424 7337211</a></p>
-                    <p><i class="fas fa-envelope"></i> Email: <a href="mailto:studiosdanielsve@gmail.com" aria-label="Enviar correo electrónico a Vacano Store">studiosdanielsve@gmail.com</a></p>
-                    <p><i class="fas fa-map-marker-alt"></i> Dirección: San Cristóbal, Táchira, Venezuela</p>
-                </div>
-                <a href="https://wa.me/584247337211" target="_blank" class="contact-whatsapp-btn" aria-label="Enviar un mensaje de WhatsApp a Vacano Store">
-                    <i class="fab fa-whatsapp"></i> Envíanos un WhatsApp
-                </a>
-            </div>
-        </section>
-    </main>
-
-    <footer class="footer">
-        <div class="container">
-            <div class="footer-col">
-                <h3>Vacano Store</h3>
-                <p>Tu tienda online de gorras en Venezuela. Ofrecemos una amplia variedad de estilos y diseños únicos para que encuentres la gorra perfecta que se adapte a tu personalidad.</p>
-            </div>
-            <div class="footer-col">
-                <h3>Enlaces Rápidos</h3>
-                <ul>
-                    <li><a href="index.html">Inicio</a></li>
-                    <li><a href="catalogo.html">Catálogo</a></li>
-                    <li><a href="#about">Nosotros</a></li>
-                    <li><a href="#contact">Contacto</a></li>
-                </ul>
-            </div>
-            <div class="footer-col contact-footer">
-                <h3>Contacto</h3>
-                <p><i class="fas fa-phone"></i> +58 424 7337211</p>
-                <p><i class="fas fa-envelope"></i> studiosdanielsve@gmail.com</p>
-                <p><i class="fas fa-map-marker-alt"></i> San Cristóbal, Táchira</p>
-                <div class="social-links">
-                    <a href="https://www.facebook.com/vacanostore.vzla" target="_blank" aria-label="Visitar Facebook de Vacano Store" rel="noopener noreferrer"><i class="fab fa-facebook-f"></i></a>
-                    <a href="https://www.instagram.com/vacano_store_vzla" target="_blank" aria-label="Visitar Instagram de Vacano Store" rel="noopener noreferrer"><i class="fab fa-instagram"></i></a>
-                    <a href="https://wa.me/584247337211" target="_blank" aria-label="Contactar por WhatsApp" rel="noopener noreferrer"><i class="fab fa-whatsapp"></i></a>
-                </div>
-            </div>
-        </div>
-        <div class="footer-bottom">
-            <span>&copy; <span id="currentYear"></span> Vacano Store. Todos los derechos reservados. Desarrollado por <a href="https://github.com/StudiosDanilIs" target="_blank" rel="noopener noreferrer">Studios Daniels</a>.</span>
-        </div>
-    </footer>
-
-    <a href="https://wa.me/584247337211" class="whatsapp-fab" target="_blank" aria-label="Contactar por WhatsApp" rel="noopener noreferrer">
-        <i class="fab fa-whatsapp"></i>
-    </a>
-
-    <button id="scrollToTopBtn" class="scroll-to-top" aria-label="Volver al inicio de la página">
-        <i class="fas fa-arrow-up"></i>
-    </button>
-
-    <div id="productModal" class="modal">
-        <div class="modal-contenido">
-            <span class="cerrar-modal" aria-label="Cerrar ventana de detalles">&times;</span>
-            <div class="galeria-layout">
-                <img id="modal-imagen-principal" src="" alt="Imagen principal del producto">
-                <div class="miniaturas-container">
-                    </div>
-            </div>
-            <div class="modal-info-producto">
-                <h2 id="modal-titulo-producto"></h2>
-                <p id="modal-descripcion-producto"></p>
-                <div class="precios-modal">
-                    <span id="modal-precio-original" class="original-price-modal"></span>
-                    <span id="modal-precio-descuento" class="discounted-price-modal"></span>
-                    <span id="modal-descuento-badge" class="descuento-badge-modal"></span>
-                </div>
-                <a href="https://wa.me/584247337211" id="whatsappModalBtn" class="whatsapp-modal-btn" target="_blank" rel="noopener noreferrer">
-                    <i class="fab fa-whatsapp"></i> Preguntar por WhatsApp
-                </a>
-            </div>
-        </div>
+    <div id="preloader">
+        <div class="spinner"></div>
+        <div id="loading-text">Cargando</div>
+        <div id="loading-region">Detectando tu región...</div>
     </div>
 
-    <div id="mobileNavOverlay" class="mobile-nav-overlay">
-        <span class="close-mobile-menu" id="closeMobileMenu" aria-label="Cerrar menú móvil">&times;</span>
-        <ul>
-            <li><a href="index.html">Inicio</a></li>
-            <li><a href="catalogo.html">Catálogo</a></li>
-            <li><a href="#about">Nosotros</a></li>
-            <li><a href="#contact">Contacto</a></li>
-        </ul>
-        <button id="themeToggleMobile" class="theme-toggle" aria-label="Cambiar tema claro/oscuro (móvil)">
-            <i class="fas fa-sun"></i> Modo Claro
-        </button>
+    <div class="container" id="main-content">
+        <h1>Vacano Store</h1>
+        <h2>Tu Tienda Online</h2>
+        <p>Experimenta la moda sin límites. Selecciona tu país para explorar nuestro catálogo exclusivo y ofertas adaptadas a tu región.</p>
+        <div class="country-selection">
+            <a href="venezuela/index.html"><span class="flag-emoji">🇻🇪</span>Venezuela</a>
+            <a href="peru/index.html"><span class="flag-emoji">🇵🇪</span>Perú</a>
+            </div>
     </div>
-
-    <script src="js/script.js"></script>
+    
     <script>
-        // Establecer el año actual en el footer
-        document.getElementById('currentYear').textContent = new Date().getFullYear();
+        document.addEventListener('DOMContentLoaded', () => {
+            const preloader = document.getElementById('preloader');
+            const loadingText = document.getElementById('loading-text');
+            const loadingRegion = document.getElementById('loading-region');
+            const mainContent = document.getElementById('main-content');
+
+            // Mapeo de códigos de país a URLs
+            const countryRedirects = {
+                'VE': { url: 'venezuela/index.html', name: 'Venezuela 🇻🇪' },
+                'PE': { url: 'peru/index.html', name: 'Perú 🇵🇪' },
+                'WORD' : { url: 'venezuela/index.html', name: 'Mundo 🌍' } // Redirección por defecto para el resto del mundo
+            };
+
+            // Redirección por defecto si el país no está en la lista o la detección falla
+            const defaultRedirect = countryRedirects['VE']; 
+
+            /**
+             * Detecta la ubicación del usuario usando una API de geolocalización.
+             * @returns {Promise<string|null>} El código de país (ej. 'US', 'VE'), o null si falla.
+             */
+            async function getUserCountry() {
+                try {
+                    const response = await fetch('http://ip-api.com/json/?fields=countryCode,country');
+                    const data = await response.json();
+                    if (data && data.countryCode) {
+                        return data.countryCode;
+                    }
+                    return null;
+                } catch (error) {
+                    console.error('Error al obtener la ubicación:', error);
+                    return null;
+                }
+            }
+
+            /**
+             * Oculta el preloader y muestra el contenido principal.
+             */
+            function hidePreloader() {
+                preloader.style.opacity = '0';
+                setTimeout(() => {
+                    preloader.style.display = 'none';
+                    mainContent.style.display = 'block';
+                    document.body.style.overflow = ''; // Habilita el scroll de nuevo
+                }, 700); // Coincide con la duración de la transición de opacidad
+            }
+
+            /**
+             * Redirige al usuario o muestra la selección manual.
+             */
+            async function handleRedirection() {
+                const countryCode = await getUserCountry();
+                console.log('País detectado:', countryCode); 
+
+                let target = null;
+                if (countryCode && countryRedirects[countryCode]) {
+                    target = countryRedirects[countryCode];
+                } else {
+                    target = defaultRedirect; 
+                }
+
+                // Si se va a redirigir automáticamente
+                if (target === defaultRedirect || (countryCode && countryRedirects[countryCode])) {
+                    loadingText.textContent = 'Cargando...'; // Mensaje inicial
+                    loadingRegion.textContent = `A la tienda de ${target.name}`;
+                    
+                    // Espera un momento para que el usuario vea el mensaje de redirección
+                    setTimeout(() => {
+                        window.location.href = target.url;
+                    }, 2500); // Redirige después de 2.5 segundos para ver el mensaje
+                } else {
+                    // Si no hay redirección automática, mostrar selección manual
+                    loadingText.textContent = '¡Hola!';
+                    loadingRegion.textContent = 'Selecciona tu país para comenzar.';
+                    setTimeout(hidePreloader, 1500); // Muestra la selección manual después de 1.5 segundos
+                }
+            }
+
+            // Inicia el proceso de redirección/carga
+            handleRedirection();
+        });
     </script>
 </body>
 </html>
