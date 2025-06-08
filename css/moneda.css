@@ -1,0 +1,275 @@
+/* Estilos adicionales para la nueva sección de apartado y envíos */
+.highlight-section {
+    background-color: var(--color-fondo-secundario); /* O un color que resalte */
+    padding: 50px 20px; /* Aumentado el padding vertical */
+    text-align: center;
+    border-radius: 8px;
+    margin-bottom: 40px; /* Más espacio entre secciones */
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    border: 1px solid var(--color-borde);
+}
+.highlight-section h2 {
+    color: var(--color-primario);
+    margin-bottom: 20px; /* Más espacio debajo del título */
+    font-size: 2.8em; /* Más grande */
+    line-height: 1.2;
+    font-weight: 700; /* Asegura que el título sea negrita */
+}
+.highlight-section p {
+    color: var(--color-texto-principal);
+    font-size: 1.25em; /* Más grande y legible */
+    line-height: 1.7; /* Mejor interlineado */
+    margin-bottom: 35px; /* Más espacio antes del botón */
+    max-width: 850px; /* Ancho máximo para mejor lectura */
+    margin-left: auto;
+    margin-right: auto;
+}
+.highlight-section .cta-button-apartado {
+    display: inline-block;
+    background-color: var(--color-primario);
+    color: white;
+    padding: 18px 35px; /* Botón más grande */
+    border-radius: 50px;
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 1.2em; /* Texto del botón más grande */
+    transition: background-color 0.3s ease, transform 0.2s ease; /* Transición para hover */
+    box-shadow: 0 5px 10px rgba(0,0,0,0.2); /* Sombra más pronunciada */
+}
+.highlight-section .cta-button-apartado:hover {
+    background-color: var(--color-primario-oscuro);
+    transform: translateY(-2px); /* Efecto hover sutil */
+}
+.info-cards-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 25px; /* Más espacio entre las tarjetas */
+    margin-top: 40px; /* Más espacio arriba de la cuadrícula */
+}
+.info-card {
+    background-color: var(--color-fondo-tarjeta);
+    padding: 30px; /* Más padding interno */
+    border-radius: 10px; /* Bordes más redondeados */
+    box-shadow: 0 4px 10px rgba(0,0,0,0.08); /* Sombra más suave */
+    text-align: left;
+    border: 1px solid var(--color-borde);
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    transition: transform 0.3s ease; /* Efecto hover para las tarjetas */
+}
+.info-card:hover {
+    transform: translateY(-5px); /* Efecto hover sutil */
+}
+.info-card i {
+    color: #EEEEEE; /* Un gris muy claro que contrasta bien con fondos oscuros y claros */
+    font-size: 2.8em; /* Íconos aún más grandes */
+    margin-bottom: 20px; /* Más espacio debajo del ícono */
+    text-shadow: 1px 1px 4px rgba(0,0,0,0.5); /* Sombra más fuerte */
+}
+.info-card h3 {
+    color: var(--color-texto-principal);
+    margin-bottom: 12px; /* Espacio debajo del título de la tarjeta */
+    font-size: 1.45em; /* Título de tarjeta más grande */
+    font-weight: 600; /* Semi-negrita para el título */
+}
+.info-card p {
+    color: var(--color-texto-secundario);
+    font-size: 1em; /* Ajustado el tamaño de la fuente para el párrafo */
+    line-height: 1.6; /* Mejor interlineado para el párrafo */
+    flex-grow: 1;
+}
+
+/* Estilo para el texto en negrita dentro de info-card y en otros párrafos */
+p strong {
+    font-weight: bold; /* Asegura que se vea negrita */
+    color: var(--color-texto-principal); /* Utiliza el color principal del texto, que se adapta al tema */
+}
+
+/* Estilos generales para títulos de sección */
+.section-title {
+    color: var(--color-primario);
+    font-size: 2.5em;
+    margin-bottom: 30px;
+    text-align: center;
+    font-weight: 700;
+}
+.section-title i {
+    margin-right: 15px;
+    font-size: 1em; /* El ícono del título no tan grande como el del info-card */
+    color: var(--color-primario); /* Asegura que el ícono del título sea azul */
+}
+/* Ajuste para la sección de hero */
+.hero {
+    padding: 80px 20px; /* Más padding para la sección hero */
+}
+.hero-content h1 {
+    font-size: 3.8em; /* Título principal más grande */
+    margin-bottom: 25px;
+}
+.hero-content p {
+    font-size: 1.4em; /* Párrafo principal más grande */
+    max-width: 900px;
+    margin-bottom: 40px;
+}
+.hero .cta-button {
+    padding: 18px 40px;
+    font-size: 1.25em;
+}
+
+/* Ajustes para otras secciones */
+.featured-collection, .special-offers, .about-section, .contact-section {
+    padding: 60px 20px; /* Padding uniforme para las secciones principales */
+    margin-bottom: 40px; /* Espacio entre secciones */
+}
+
+/* CORRECCIÓN PARA LA LÍNEA FEA */
+.contact-section {
+    box-shadow: none !important;
+    border-bottom: none !important;
+    margin-bottom: 0 !important;
+    padding-bottom: 60px;
+}
+
+.footer {
+    border-top: none !important;
+    box-shadow: none !important;
+}
+/* FIN CORRECCIÓN */
+
+
+/* Footer adjustments */
+.footer-col h3 {
+    margin-bottom: 20px;
+}
+.footer-col p, .footer-col ul li {
+    line-height: 1.8;
+}
+.footer-bottom {
+    padding: 25px 0;
+    font-size: 0.95em;
+}
+
+/* ESTILOS PARA EL BOTÓN FLOTANTE DE WHATSAPP Y SCROLL-TO-TOP */
+/* Ajustar el position del whatsapp-fab y scroll-to-top para dejar espacio al nuevo botón */
+.whatsapp-fab {
+    bottom: 30px;
+    right: 30px;
+    width: 65px;
+    height: 65px;
+    font-size: 2.2em;
+    z-index: 1000; /* Asegura que esté por encima de todo */
+}
+.scroll-to-top {
+    bottom: 100px; /* Se mueve hacia arriba para dejar espacio */
+    right: 30px;
+    width: 55px;
+    height: 55px;
+    font-size: 1.8em;
+    z-index: 1000;
+}
+
+/* ESTILOS PARA EL BOTÓN FLOTANTE DE MONEDA */
+.currency-fab {
+    position: fixed;
+    /* AJUSTE: Más abajo */
+    bottom: 110px; /* Bajado de 150px a 110px para darle más espacio por debajo */
+    right: 30px;
+    
+    /* Mantenemos el estilo azulado */
+    background: linear-gradient(135deg, #007bff 0%, #0056b3 100%);
+    color: white;
+    border: 2px solid rgba(255, 255, 255, 0.6);
+    border-radius: 50%;
+    width: 60px;
+    height: 60px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.5em;
+    font-weight: 700;
+    text-shadow: 0 1px 3px rgba(0,0,0,0.3);
+    box-shadow: 0 6px 12px rgba(0,0,0,0.4);
+    cursor: pointer;
+    transition: all 0.35s cubic-bezier(0.2, 0.8, 0.2, 1);
+    z-index: 1000;
+    opacity: 0;
+    visibility: hidden;
+    animation: none;
+}
+
+.currency-fab.show {
+    opacity: 1;
+    visibility: visible;
+}
+
+.currency-fab:hover {
+    background: linear-gradient(135deg, #0056b3 0%, #007bff 100%);
+    transform: scale(1.1) translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0,0,0,0.5);
+}
+
+/* Animación de "pop" para el cambio de moneda */
+@keyframes pop-animation {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.2); }
+    100% { transform: scale(1); }
+}
+
+.currency-fab.animate-pop {
+    animation: pop-animation 0.3s ease-in-out;
+}
+
+
+/* ESTILOS PARA EL BOTÓN FLOTANTE DE WHATSAPP Y SCROLL-TO-TOP */
+/* Ajustar el position de los botones para que no se superpongan y estén más abajo */
+.whatsapp-fab {
+    bottom: 30px; /* Posición más baja para WhatsApp */
+    right: 30px;
+    width: 65px;
+    height: 65px;
+    font-size: 2.2em;
+    z-index: 1000;
+}
+.scroll-to-top {
+    /* AJUSTE: Subido de 85px (móvil) o 100px (desktop) para dejar espacio */
+    bottom: 80px; /* Se mueve a 80px (antes 100px) */
+    right: 30px;
+    width: 55px;
+    height: 55px;
+    font-size: 1.8em;
+    z-index: 1000;
+}
+
+
+/* Media queries para responsividad */
+@media (max-width: 768px) {
+    /* ... Tus otras media queries que no cambiamos ... */
+
+    /* AJUSTES PARA LOS FAB EN MÓVIL */
+    .whatsapp-fab {
+        bottom: 20px; /* Más abajo en móvil */
+        right: 20px;
+        width: 55px;
+        height: 55px;
+        font-size: 1.8em;
+    }
+    .scroll-to-top {
+        /* AJUSTE: Subido de 120px (móvil) para dejar espacio al botón de moneda */
+        bottom: 70px; /* Más abajo en móvil */
+        right: 20px;
+        width: 45px;
+        height: 45px;
+        font-size: 1.5em;
+    }
+    /* Ajustes para el FAB de moneda en móvil */
+    .currency-fab {
+        /* AJUSTE: Más abajo en móvil */
+        bottom: 80px; /* Bajado de 140px a 120px en móvil */
+        right: 20px;
+        width: 50px;
+        height: 50px;
+        font-size: 1.2em;
+        box-shadow: 0 4px 8px rgba(0,0,0,0.3);
+    }
+}

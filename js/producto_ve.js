@@ -177,7 +177,32 @@ document.addEventListener('DOMContentLoaded', () => {
     const mobileNavLinks = document.querySelectorAll('#mobileNavOverlay ul li a');
     const header = document.querySelector('.header');
 
+    // --- NUEVO: Elemento del DOM para el FAB de moneda ---
+    const currencyFab = document.getElementById('currencyFab');
+
     const defaultImage = 'https://placehold.co/400x250/8892B0/0A192F?text=Imagen+No+Disp';
+
+    // --- NUEVO: Variables de Moneda y Tipo de Cambio ---
+    const EXCHANGE_RATE_USD_TO_COP = 4000; // Ejemplo: 1 USD = 3900 COP (¡ACTUALIZA ESTE VALOR REGULARMENTE!)
+    let currentCurrency = localStorage.getItem('selectedCurrency') || 'USD'; // Moneda por defecto o la guardada
+
+    // --- NUEVO: Función para formatear moneda ---
+    /**
+     * Formatea un valor numérico a un string de moneda.
+     * @param {number} amount - La cantidad a formatear.
+     * @param {string} currencyCode - El código de la moneda ('USD', 'COP').
+     * @returns {string} El string de moneda formateado.
+     */
+    function formatCurrency(amount, currencyCode) {
+        if (currencyCode === 'USD') {
+            return `$${amount.toFixed(2)}`;
+        } else if (currencyCode === 'COP') {
+            const amountInCOP = amount * EXCHANGE_RATE_USD_TO_COP;
+            // Para COP, generalmente no se usan decimales para cantidades grandes
+            return `$${new Intl.NumberFormat('es-CO', { minimumFractionDigits: 0, maximumFractionDigits: 0 }).format(amountInCOP)}`;
+        }
+        return amount.toFixed(2); // Fallback
+    }
 
     // --- Funciones de Utilidad ---
 
@@ -192,14 +217,15 @@ document.addEventListener('DOMContentLoaded', () => {
             product.imagenes[0] :
             defaultImage;
 
-        let priceHTML = `<span class="precio">$${product.precio.toFixed(2)}</span>`;
+        // --- MODIFICADO: Usa formatCurrency aquí ---
+        let priceHTML = `<span class="precio">${formatCurrency(product.precio, currentCurrency)}</span>`;
         let discountBadgeHTML = '';
 
         if (product.enOferta && product.precioOriginal && product.descuento) {
             priceHTML = `
                 <div class="price-container">
-                    <span class="original-price">$${product.precioOriginal.toFixed(2)}</span>
-                    <span class="discounted-price">$${product.precio.toFixed(2)}</span>
+                    <span class="original-price">${formatCurrency(product.precioOriginal, currentCurrency)}</span>
+                    <span class="discounted-price">${formatCurrency(product.precio, currentCurrency)}</span>
                 </div>
             `;
             discountBadgeHTML = `<div class="discount-badge">${product.descuento}% OFF</div>`;
@@ -329,22 +355,25 @@ document.addEventListener('DOMContentLoaded', () => {
         modalTitulo.textContent = product.nombre;
         modalDescripcion.textContent = product.descripcion;
 
+        // --- MODIFICADO: Usa formatCurrency aquí también ---
         if (product.enOferta && product.precioOriginal && product.descuento) {
-            modalPrecioOriginal.textContent = `$${product.precioOriginal.toFixed(2)}`;
+            modalPrecioOriginal.textContent = formatCurrency(product.precioOriginal, currentCurrency);
             modalPrecioOriginal.style.display = 'inline-block';
-            modalPrecioDescuento.textContent = `$${product.precio.toFixed(2)}`;
+            modalPrecioDescuento.textContent = formatCurrency(product.precio, currentCurrency);
+            modalPrecioDescuento.style.display = 'inline-block';
             modalDescuentoBadge.textContent = `${product.descuento}% OFF`;
             modalDescuentoBadge.style.display = 'inline-block';
         } else {
             modalPrecioOriginal.style.display = 'none';
-            modalPrecioDescuento.textContent = `$${product.precio.toFixed(2)}`;
+            modalPrecioDescuento.textContent = formatCurrency(product.precio, currentCurrency);
+            modalPrecioDescuento.style.display = 'inline-block'; // Asegura que siempre se muestre el precio actual
             modalDescuentoBadge.style.display = 'none';
         }
 
         let whatsappMessage = '';
-        let productPriceText = product.precio.toFixed(2);
+        let productPriceText = formatCurrency(product.precio, currentCurrency); // Usa la función formatCurrency
         if (product.enOferta && product.precioOriginal) {
-            productPriceText = `${product.precio.toFixed(2)} (Antes $${product.precioOriginal.toFixed(2)}, ${product.descuento}% OFF)`;
+            productPriceText = `${formatCurrency(product.precio, currentCurrency)} (Antes ${formatCurrency(product.precioOriginal, currentCurrency)}, ${product.descuento}% OFF)`;
         }
 
         if (typeof product.stock === 'number') {
@@ -352,7 +381,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 whatsappModalBtn.textContent = 'Preguntar por WhatsApp';
                 whatsappModalBtn.classList.remove('disabled');
                 whatsappMessage = `Hola! Estoy interesado en la gorra "${product.nombre}" (ID: ${product.id}).`;
-                whatsappMessage += `\nSu precio es: $${productPriceText}.`;
+                whatsappMessage += `\nSu precio es: ${productPriceText}.`;
                 whatsappMessage += `\n¿Me podrías confirmar si está disponible y si tienen más fotos?`;
             } else {
                 whatsappModalBtn.textContent = 'Producto Agotado';
@@ -364,7 +393,7 @@ document.addEventListener('DOMContentLoaded', () => {
             whatsappModalBtn.textContent = 'Preguntar por WhatsApp';
             whatsappModalBtn.classList.remove('disabled');
             whatsappMessage = `Hola! Estoy interesado en la gorra "${product.nombre}" (ID: ${product.id}).`;
-            whatsappMessage += `\nSu precio es: $${productPriceText}.`;
+            whatsappMessage += `\nSu precio es: ${productPriceText}.`;
             whatsappMessage += `\n¿Podrías darme más información sobre este producto?`;
         }
 
@@ -445,7 +474,7 @@ document.addEventListener('DOMContentLoaded', () => {
     mobileNavLinks.forEach(link => {
         link.addEventListener('click', () => {
             mobileNavOverlay.classList.remove('active');
-            document.body.style.overflow = '';
+            document.body.classList.remove('modal-open'); // Ajustado a 'modal-open'
         });
     });
 
@@ -454,7 +483,7 @@ document.addEventListener('DOMContentLoaded', () => {
             !mobileNavOverlay.contains(event.target) &&
             !hamburgerMenu.contains(event.target)) {
             mobileNavOverlay.classList.remove('active');
-            document.body.style.overflow = '';
+            document.body.classList.remove('modal-open'); // Ajustado a 'modal-open'
         }
     });
 
@@ -501,6 +530,43 @@ document.addEventListener('DOMContentLoaded', () => {
         whatsappFab.href = `https://wa.me/584247337211`;
     }
 
-    // Cargar el contenido cuando el DOM esté listo
-    loadContent();
+    // --- NUEVO: Funciones y Event Listeners para el FAB de Moneda ---
+
+    /**
+     * Actualiza el texto del FAB de moneda y los precios en toda la página.
+     */
+    function updateCurrencyDisplay() {
+        if (currencyFab) {
+            currencyFab.textContent = currentCurrency; // Actualiza el texto del botón flotante (USD/COP)
+        }
+        // Vuelve a renderizar todos los productos para actualizar los precios
+        loadContent(); // Re-llama a loadContent para refrescar todos los precios
+    }
+
+    /**
+     * Alterna la moneda actual entre USD y COP.
+     */
+    function toggleCurrency() {
+        currentCurrency = (currentCurrency === 'USD') ? 'COP' : 'USD';
+        localStorage.setItem('selectedCurrency', currentCurrency);
+        updateCurrencyDisplay(); // Llama a la función para actualizar la interfaz
+    }
+
+    // Event listener para el FAB de moneda (para que cambie al tocar)
+    if (currencyFab) {
+        currencyFab.addEventListener('click', toggleCurrency);
+
+        // Mostrar/ocultar el FAB de moneda al hacer scroll (similar a scroll-to-top)
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 300) {
+                currencyFab.classList.add('show');
+            } else {
+                currencyFab.classList.remove('show');
+            }
+        });
+    }
+
+
+    // Cargar el contenido y establecer la moneda inicial cuando el DOM esté listo
+    updateCurrencyDisplay(); // Se llama aquí para que los productos se rendericen con la moneda correcta al cargar.
 });
