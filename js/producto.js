@@ -252,7 +252,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const path = window.location.pathname;
 
         // Renderizar para inicio.html
-        if (path.includes('/inicio.html') || path === '/') {
+        if (path.includes('/index.html') || path === '/') {
             const featuredGrid = document.getElementById('featuredProductsGrid');
             const offersGrid = document.getElementById('offerProductsGrid');
 

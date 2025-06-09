@@ -4,423 +4,554 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Vacano Store | Selecciona tu País</title>
+    <meta name="description"
+        content="Vacano Store Perú: Tu tienda online de gorras en Perú con diseños únicos, calidad premium y ofertas especiales. ¡Encuentra tu estilo perfecto aquí y apoya el talento nacional!">
+    <meta name="author" content="Studios Daniels">
+
+    <meta property="og:title" content="Vacano Store Perú - Tu Estilo, Tu Flow Peruano">
+    <meta property="og:description"
+        content="Gorras con diseños únicos, calidad premium y precios inigualables en Perú. Expresa tu personalidad con nuestros exclusivos estilos urbanos y apoya el diseño hecho en casa.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="URL_DE_TU_PAGINA_INICIO_PERU.html">
+    <meta property="og:image" content="URL_DE_IMAGEN_DE_PREVISUALIZACION.jpg">
+    <meta property="og:locale" content="es_PE" id="og-locale-meta">
+
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Vacano Store Perú - Tu Estilo, Tu Flow Peruano">
+    <meta name="twitter:description"
+        content="Gorras con diseños únicos, calidad premium y precios inigualables en Perú. Expresa tu personalidad con nuestros exclusivos estilos urbanos y apoya el diseño hecho en casa.">
+    <meta name="twitter:image" content="URL_DE_IMAGEN_DE_PREVISUALIZACION.jpg">
+    <title>Vacano Store - Inicio Perú</title>
     <link rel="icon" href="imagenes/logo.ico" type="image/x-icon">
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+
+    <link rel="stylesheet" href="css/global.css">
+    <link rel="stylesheet" href="css/inicio.css">
+    <link rel="stylesheet" href="css/catalogo.css">
     <style>
-        /* Definición de variables CSS para los colores */
-        :root {
-            --color-primary-dark: #0a2463;
-            --color-primary-light: #3e92cc;
-            --color-secondary-dark: #1e3a8a;
-            --color-secondary-light: #5e7ce2;
-            --color-accent: #00b4d8;
-            --color-text-dark: #1f2937;
-            --color-text-light: #f8f9fa;
-            --color-bg-light: #f9fafb;
-            --color-bg-white: #ffffff;
-            --color-shadow: rgba(0, 0, 0, 0.15);
-            --color-border: #e5e7eb;
-            --color-button-hover: #e0f2fe;
-
-            /* Nuevas variables para el degradado del fondo */
-            --gradient-start: #03045e;
-            --gradient-mid: #023e8a;
-            --gradient-end: #0077b6;
-            --gradient-accent: #00b4d8;
-        }
-
-        /* Estilos generales */
-        body {
-            margin: 0;
-            font-family: 'Poppins', sans-serif;
-            background: linear-gradient(-45deg,
-                    var(--gradient-start),
-                    var(--gradient-mid),
-                    var(--gradient-end),
-                    var(--gradient-accent));
-            background-size: 400% 400%;
-            animation: gradientAnimation 12s ease infinite;
-            color: var(--color-text-light);
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            min-height: 100vh;
+        /* Estilos adicionales para la nueva sección de apartado y envíos */
+        .highlight-section {
+            background-color: var(--color-fondo-secundario);
+            /* O un color que resalte */
+            padding: 50px 20px;
+            /* Aumentado el padding vertical */
             text-align: center;
-            padding: 20px;
-            box-sizing: border-box;
-            overflow: hidden;
-            position: relative;
+            border-radius: 8px;
+            margin-bottom: 40px;
+            /* Más espacio entre secciones */
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            border: 1px solid var(--color-borde);
         }
 
-        /* Efecto de partículas/burbujas para el fondo */
-        .particles {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            overflow: hidden;
-            z-index: 0;
-        }
-
-        .particle {
-            position: absolute;
-            background: rgba(255, 255, 255, 0.1);
-            border-radius: 50%;
-            animation: float linear infinite;
-        }
-
-        @keyframes float {
-            0% {
-                transform: translateY(0) rotate(0deg);
-                opacity: 1;
-            }
-
-            100% {
-                transform: translateY(-1000px) rotate(720deg);
-                opacity: 0;
-            }
-        }
-
-        /* Animación para el degradado del fondo */
-        @keyframes gradientAnimation {
-            0% {
-                background-position: 0% 50%;
-            }
-
-            50% {
-                background-position: 100% 50%;
-            }
-
-            100% {
-                background-position: 0% 50%;
-            }
-        }
-
-        /* --- Estilos del Preloader --- */
-        #preloader {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(135deg, var(--color-primary-dark), var(--color-secondary-dark));
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            z-index: 9999;
-            transition: opacity 0.7s ease-out;
-            color: white;
-            text-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
-        }
-
-        .spinner {
-            border: 8px solid rgba(255, 255, 255, 0.3);
-            border-top: 8px solid var(--color-accent);
-            border-radius: 50%;
-            width: 70px;
-            height: 70px;
-            animation: spin 1.2s cubic-bezier(0.5, 0, 0.5, 1) infinite;
-            margin-bottom: 25px;
-            box-shadow: 0 0 15px rgba(0, 180, 216, 0.3);
-        }
-
-        @keyframes spin {
-            0% {
-                transform: rotate(0deg);
-            }
-
-            100% {
-                transform: rotate(360deg);
-            }
-        }
-
-        #loading-text {
-            font-size: 1.8em;
+        .highlight-section h2 {
+            color: var(--color-primario);
+            margin-bottom: 20px;
+            /* Más espacio debajo del título */
+            font-size: 2.8em;
+            /* Más grande */
+            line-height: 1.2;
             font-weight: 700;
-            margin-bottom: 15px;
+            /* Asegura que el título sea negrita */
         }
 
-        /* --- Estilos del Contenido Principal --- */
-        .container {
-            max-width: 700px;
-            padding: 60px;
-            background-color: rgba(255, 255, 255, 0.95);
-            border-radius: 16px;
-            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.25);
-            animation: fadeIn 1s ease-out forwards;
-            border: none;
-            position: relative;
-            overflow: hidden;
-            z-index: 1;
-            backdrop-filter: blur(8px);
-            -webkit-backdrop-filter: blur(8px);
-            border: 1px solid rgba(255, 255, 255, 0.2);
-            display: none; /* Ocultamos el contenido principal inicialmente */
-        }
-
-        @keyframes fadeIn {
-            from {
-                opacity: 0;
-                transform: translateY(-30px);
-            }
-
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        h1 {
-            font-size: 3.5em;
-            margin-bottom: 10px;
-            font-weight: 800;
-            background-image: linear-gradient(45deg,
-                    var(--color-primary-dark),
-                    var(--color-primary-light),
-                    var(--color-accent));
-            -webkit-background-clip: text;
-            background-clip: text;
-            color: transparent;
-            display: inline-block;
-            letter-spacing: -1px;
-            position: relative;
-            animation: textReveal 1s ease-out 0.5s forwards;
-        }
-
-        @keyframes textReveal {
-            from {
-                transform: translateY(20px);
-                opacity: 0;
-            }
-
-            to {
-                transform: translateY(0);
-                opacity: 1;
-            }
-        }
-
-        h2 {
-            font-size: 1.8em;
-            color: var(--color-primary-dark);
-            margin-top: 0px;
-            margin-bottom: 50px;
-            font-weight: 400;
-            letter-spacing: 0.5px;
-            animation: textReveal 1s ease-out 0.7s forwards;
-        }
-
-        p {
+        .highlight-section p {
+            color: var(--color-texto-principal);
             font-size: 1.25em;
-            margin-bottom: 50px;
-            line-height: 1.8;
-            color: var(--color-text-dark);
-            max-width: 450px;
+            /* Más grande y legible */
+            line-height: 1.7;
+            /* Mejor interlineado */
+            margin-bottom: 35px;
+            /* Más espacio antes del botón */
+            max-width: 850px;
+            /* Ancho máximo para mejor lectura */
             margin-left: auto;
             margin-right: auto;
-            animation: textReveal 1s ease-out 0.9s forwards;
         }
 
-        .country-selection {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 20px;
-            margin-top: 30px;
-            animation: buttonsFadeIn 1s ease-out 1.2s forwards;
-            opacity: 0;
-        }
-
-        @keyframes buttonsFadeIn {
-            from {
-                opacity: 0;
-                transform: translateY(30px);
-            }
-
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        .country-selection a {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            background-color: var(--color-bg-white);
-            color: var(--color-primary-dark);
-            padding: 18px 25px;
-            border-radius: 10px;
-            text-decoration: none;
-            font-size: 1.15em;
-            font-weight: 600;
-            transition: all 0.3s ease;
-            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
-            border: 1px solid var(--color-border);
-            position: relative;
-            overflow: hidden;
-            z-index: 1;
-        }
-
-        .country-selection a::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: -100%;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(135deg,
-                    var(--color-primary-light),
-                    var(--color-accent));
-            transition: all 0.4s ease;
-            z-index: -1;
-        }
-
-        .country-selection a:hover::before {
-            left: 0;
-        }
-
-        .country-selection a:hover {
+        .highlight-section .cta-button-apartado {
+            display: inline-block;
+            background-color: var(--color-primario);
             color: white;
-            transform: translateY(-5px);
-            box-shadow: 0 12px 25px rgba(0, 0, 0, 0.2);
-            border-color: transparent;
+            padding: 18px 35px;
+            /* Botón más grande */
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 1.2em;
+            /* Texto del botón más grande */
+            transition: background-color 0.3s ease, transform 0.2s ease;
+            /* Transición para hover */
+            box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+            /* Sombra más pronunciada */
         }
 
-        .country-selection a:hover .flag-emoji {
-            transform: scale(1.1) rotate(5deg);
+        .highlight-section .cta-button-apartado:hover {
+            background-color: var(--color-primario-oscuro);
+            transform: translateY(-2px);
+            /* Efecto hover sutil */
         }
 
-        .flag-emoji {
-            font-size: 2.2em;
-            margin-right: 15px;
-            line-height: 1;
+        .info-cards-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 25px;
+            /* Más espacio entre las tarjetas */
+            margin-top: 40px;
+            /* Más espacio arriba de la cuadrícula */
+        }
+
+        .info-card {
+            background-color: var(--color-fondo-tarjeta);
+            padding: 30px;
+            /* Más padding interno */
+            border-radius: 10px;
+            /* Bordes más redondeados */
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
+            /* Sombra más suave */
+            text-align: left;
+            border: 1px solid var(--color-borde);
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
             transition: transform 0.3s ease;
+            /* Efecto hover para las tarjetas */
         }
 
-        /* Medias queries para dispositivos móviles */
+        .info-card:hover {
+            transform: translateY(-5px);
+            /* Efecto hover sutil */
+        }
+
+        .info-card i {
+            color: #EEEEEE;
+            /* Un gris muy claro que contrasta bien con fondos oscuros y claros */
+            font-size: 2.8em;
+            /* Íconos aún más grandes */
+            margin-bottom: 20px;
+            /* Más espacio debajo del ícono */
+            text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.5);
+            /* Sombra más fuerte */
+        }
+
+        .info-card h3 {
+            color: var(--color-texto-principal);
+            margin-bottom: 12px;
+            /* Espacio debajo del título de la tarjeta */
+            font-size: 1.45em;
+            /* Título de tarjeta más grande */
+            font-weight: 600;
+            /* Semi-negrita para el título */
+        }
+
+        .info-card p {
+            color: var(--color-texto-secundario);
+            font-size: 1em;
+            /* Ajustado el tamaño de la fuente para el párrafo */
+            line-height: 1.6;
+            /* Mejor interlineado para el párrafo */
+            flex-grow: 1;
+        }
+
+        /* Estilo para el texto en negrita dentro de info-card y en otros párrafos */
+        p strong {
+            font-weight: bold;
+            /* Asegura que se vea negrita */
+            color: var(--color-texto-principal);
+            /* Utiliza el color principal del texto, que se adapta al tema */
+        }
+
+        /* Estilos generales para títulos de sección */
+        .section-title {
+            color: var(--color-primario);
+            font-size: 2.5em;
+            margin-bottom: 30px;
+            text-align: center;
+            font-weight: 700;
+        }
+
+        .section-title i {
+            margin-right: 15px;
+            font-size: 1em;
+            /* El ícono del título no tan grande como el del info-card */
+            color: var(--color-primario);
+            /* Asegura que el ícono del título sea azul */
+        }
+
+        /* Ajuste para la sección de hero */
+        .hero {
+            padding: 80px 20px;
+            /* Más padding para la sección hero */
+        }
+
+        .hero-content h1 {
+            font-size: 3.8em;
+            /* Título principal más grande */
+            margin-bottom: 25px;
+        }
+
+        .hero-content p {
+            font-size: 1.4em;
+            /* Párrafo principal más grande */
+            max-width: 900px;
+            margin-bottom: 40px;
+        }
+
+        .hero .cta-button {
+            padding: 18px 40px;
+            font-size: 1.25em;
+        }
+
+        /* Ajustes para otras secciones */
+        .featured-collection,
+        .special-offers,
+        .about-section,
+        .contact-section {
+            padding: 60px 20px;
+            /* Padding uniforme para las secciones principales */
+            margin-bottom: 40px;
+            /* Espacio entre secciones */
+        }
+
+        /* CORRECCIÓN PARA LA LÍNEA FEA */
+        /* Eliminar cualquier sombra o borde residual de la última sección antes del footer */
+        .contact-section {
+            box-shadow: none !important;
+            /* Asegura que no tenga sombra inferior */
+            border-bottom: none !important;
+            /* Asegura que no tenga borde inferior */
+            margin-bottom: 0 !important;
+            /* Elimina cualquier margen inferior que pueda crear espacio */
+            padding-bottom: 60px;
+            /* Mantén el padding para el contenido */
+        }
+
+        /* Asegurarse de que el footer no tenga un borde superior no deseado */
+        .footer {
+            border-top: none !important;
+            /* Elimina cualquier borde superior si existe */
+            box-shadow: none !important;
+            /* Elimina cualquier sombra superior si existe */
+            /* Si aún ves la línea, puedes probar con un pequeño margen negativo en el footer, aunque no es lo ideal: */
+            /* margin-top: -1px; */
+        }
+
+        /* FIN CORRECCIÓN */
+
+
+        /* Footer adjustments */
+        .footer-col h3 {
+            margin-bottom: 20px;
+        }
+
+        .footer-col p,
+        .footer-col ul li {
+            line-height: 1.8;
+        }
+
+        .footer-bottom {
+            padding: 25px 0;
+            font-size: 0.95em;
+        }
+
+        .whatsapp-fab {
+            bottom: 30px;
+            right: 30px;
+            width: 65px;
+            height: 65px;
+            font-size: 2.2em;
+        }
+
+        .scroll-to-top {
+            bottom: 100px;
+            right: 30px;
+            width: 55px;
+            height: 55px;
+            font-size: 1.8em;
+        }
+
+        /* Media queries para responsividad */
         @media (max-width: 768px) {
-            .container {
-                padding: 40px 25px;
-                width: 90%;
+            .highlight-section h2 {
+                font-size: 2em;
             }
 
-            h1 {
-                font-size: 2.5em;
-                letter-spacing: 0;
+            .highlight-section p {
+                font-size: 1.1em;
             }
 
-            h2 {
-                font-size: 1.4em;
-                margin-bottom: 35px;
-            }
-
-            p {
-                font-size: 1.05em;
-                margin-bottom: 35px;
-            }
-
-            .country-selection {
+            .info-cards-grid {
                 grid-template-columns: 1fr;
-                gap: 15px;
+                /* Una columna en pantallas pequeñas */
             }
 
-            .country-selection a {
-                padding: 16px 20px;
-                font-size: 1.05em;
-                min-width: unset;
+            .info-card i {
+                font-size: 2.5em;
             }
 
-            .flag-emoji {
+            .info-card h3 {
+                font-size: 1.25em;
+            }
+
+            .hero-content h1 {
+                font-size: 2.8em;
+            }
+
+            .hero-content p {
+                font-size: 1.1em;
+            }
+
+            .section-title {
+                font-size: 2em;
+            }
+
+            .whatsapp-fab {
+                width: 55px;
+                height: 55px;
                 font-size: 1.8em;
-                margin-right: 10px;
+                bottom: 20px;
+                right: 20px;
+            }
+
+            .scroll-to-top {
+                bottom: 85px;
+                right: 20px;
+                width: 45px;
+                height: 45px;
+                font-size: 1.5em;
             }
         }
     </style>
+    <script>
+        // Mantiene la lógica del tema oscuro/claro antes de cargar common.js
+        (function () {
+            const currentTheme = localStorage.getItem('theme');
+            if (currentTheme === 'light-mode') {
+                document.documentElement.classList.add('light-mode');
+            }
+        })();
+    </script>
 </head>
 
 <body>
-    <!-- Partículas/burbujas para el fondo animado -->
-    <div class="particles" id="particles"></div>
+    <header class="header">
+        <div class="container">
+            <div class="logo">
+                <a href="index.html" class="brand-name" aria-label="Ir a la página de inicio">Vacano Store</a>
+                <span class="brand-subtitle">Tienda Online Perú</span>
+            </div>
+            <nav class="main-nav">
+                <a href="index.html">Inicio</a>
+                <a href="catalogo.html">Nuestro Catálogo</a>
+                <a href="#about">Nosotros</a>
+                <a href="#contact">Contacto</a>
+            </nav>
+            <button id="themeToggle" class="theme-toggle" aria-label="Cambiar tema claro/oscuro">
+                <i class="fas fa-sun"></i> Modo Claro
+            </button>
+            <button id="hamburgerMenu" class="hamburger-menu" aria-label="Abrir menú de navegación móvil">
+                <i class="fas fa-bars"></i>
+            </button>
+        </div>
+    </header>
 
-    <div id="preloader">
-        <div class="spinner"></div>
-        <div id="loading-text">Cargando...</div>
-    </div>
+    <main>
+        <section class="hero">
+            <div class="container hero-content">
+                <h1>Tu Estilo y Flow a la mano</h1>
+                <p><span id="country-specific-welcome">¡Bienvenido a Vacano Store Perú!</span> Descubre gorras con
+                    diseños únicos, calidad premium y precios que te encantarán. Expresa tu personalidad con nuestros
+                    exclusivos estilos urbanos, ideales para el ritmo peruano.</p>
+                <a href="catalogo.html" class="cta-button" aria-label="Explorar todo el catálogo de gorras">
+                    Explorar Catálogo <i class="fas fa-arrow-right"></i>
+                </a>
+            </div>
+        </section>
 
-    <div class="container" id="main-content">
-        <h1>Vacano Store</h1>
-        <h2>Tu Tienda Online</h2>
-        <p>Experimenta la moda sin límites. Selecciona tu país para explorar nuestro catálogo exclusivo y ofertas
-            adaptadas a tu región.</p>
-        <div class="country-selection">
-            <a href="inicio.html"><span class="flag-emoji">🇵🇪</span>Perú</a>
+        <section id="apartado-gorras" class="highlight-section">
+            <div class="container">
+                <h2 class="section-title">¡Descubre tu Estilo en Perú! <i class="fas fa-hat-wizard"></i></h2>
+                <p>
+                    ¡Llegamos a Perú para ofrecerte las gorras más exclusivas! En Vacano Store, creemos que tu estilo es
+                    tu sello personal. Explora nuestra colección y encuentra esa gorra perfecta que te hará destacar.
+                    ¡Tenemos variedad y calidad que te encantarán!
+                </p>
+                <a href="catalogo.html" class="cta-button" aria-label="Ver el catálogo de gorras en Perú">
+                    <i class="fas fa-eye"></i> Ver Catálogo Completo
+                </a>
+            </div>
+        </section>
+
+        <section id="featured-products" class="featured-collection">
+            <div class="container">
+                <h2 class="section-title"><i class="fas fa-star"></i> Productos Destacados en Perú</h2>
+                <div class="collection-grid" id="featuredProductsGrid">
+                    <p style="text-align: center; color: var(--color-texto-secundario);">Descubre nuestras gorras más
+                        populares y con más estilo en Perú...</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="special-offers" class="special-offers">
+            <div class="container">
+                <h2 class="section-title"><i class="fas fa-tag"></i> Ofertas Especiales para Perú</h2>
+                <div class="offers-grid" id="offerProductsGrid">
+                    <p style="text-align: center; color: var(--color-texto-secundario);">Aprovecha nuestras ofertas
+                        exclusivas, pensadas solo para nuestros clientes en Perú...</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="important-info" class="highlight-section"
+            style="background-color: var(--color-fondo-claro); box-shadow: none;">
+            <div class="container">
+                <h2 class="section-title"><i class="fas fa-info-circle"></i> ¡Información Clave para tu Compra en Perú!
+                </h2>
+                <div class="info-cards-grid">
+                    <div class="info-card">
+                        <i class="fas fa-shipping-fast"></i>
+                        <h3>Envíos Rápidos a Nivel Nacional</h3>
+                        <p>Llevamos tu estilo a cada rincón de Perú. Realizamos envíos seguros y eficientes a través de
+                            nuestros aliados comerciales: <strong>Olva Courier</strong> y <strong>Shalom</strong>. Los
+                            pedidos suelen llegar en un plazo estimado de <strong>3 a 7 días hábiles</strong>. ¡Tu gorra
+                            Vacano, directo a tu puerta!</p>
+                    </div>
+                    <div class="info-card">
+                        <i class="fas fa-money-bill-wave"></i>
+                        <h3>Diversos Métodos de Pago</h3>
+                        <p>Tu comodidad es nuestra prioridad. Te ofrecemos múltiples opciones para completar tu compra
+                            de forma segura: <strong>Yape</strong>, <strong>Plin</strong>, <strong>Transferencias
+                                Bancarias</strong> (BCP, Interbank) y <strong>Tarjetas de Crédito/Débito</strong> (Visa,
+                            Mastercard). Elige la que mejor se adapte a ti.</p>
+                    </div>
+                    <div class="info-card">
+                        <i class="fas fa-map-marker-alt"></i>
+                        <h3>Entregas Personales en Lima</h3>
+                        <p>Si te encuentras en <strong>Lima Metropolitana</strong>, puedes coordinar la entrega directa
+                            de tu pedido en un punto conveniente. ¡Una opción rápida y sin costo adicional para los
+                            locales!</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="about" class="about-section">
+            <div class="container about-content">
+                <h2 class="section-title"><i class="fas fa-info-circle"></i> Sobre Vacano Store en Perú</h2>
+                <p id="about-vacano-store-text">En Vacano Store, somos tu destino online para las gorras más cool y de
+                    alta calidad en Perú. Nos apasiona ofrecerte diseños que reflejen tu personalidad y te hagan
+                    destacar. Creemos en el estilo auténtico y en la comodidad, por eso cada gorra de nuestra colección
+                    está pensada para ti. ¡Únete a la comunidad Vacano y luce tu flow peruano!</p>
+            </div>
+        </section>
+
+        <section id="contact" class="contact-section">
+            <div class="container">
+                <h2 class="section-title"><i class="fas fa-headset"></i> Contáctanos en Perú</h2>
+                <p class="contact-intro">¿Tienes alguna pregunta, necesitas asistencia o quieres saber más sobre
+                    nuestros productos y envíos en Perú? Estamos aquí para ayudarte.</p>
+                <div class="contact-info" id="contact-whatsapp-phone">
+                    <p>Puedes contactarnos directamente vía WhatsApp o por correo electrónico.</p>
+                </div>
+                <a href="https://wa.me/51933450055" id="contact-whatsapp-link" target="_blank"
+                    class="contact-whatsapp-btn" aria-label="Enviar un mensaje de WhatsApp a Vacano Store Perú"
+                    rel="noopener noreferrer">
+                    <i class="fab fa-whatsapp"></i> Envíanos un WhatsApp (Perú)
+                </a>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-col">
+                <h3>Vacano Store Perú</h3>
+                <p>Tu tienda online de gorras en Perú. Ofrecemos una amplia variedad de estilos y diseños únicos para
+                    que encuentres la gorra perfecta que se adapte a tu personalidad y al estilo vibrante de Perú.</p>
+            </div>
+            <div class="footer-col">
+                <h3>Enlaces Rápidos</h3>
+                <ul>
+                    <li><a href="index.html">Inicio</a></li>
+                    <li><a href="catalogo.html">Catálogo</a></li>
+                    <li><a href="#about">Nosotros</a></li>
+                    <li><a href="#contact">Contacto</a></li>
+                </ul>
+            </div>
+            <div class="footer-col contact-footer">
+                <h3>Contacto en Perú</h3>
+                <p><i class="fas fa-phone"></i> +51 933 450055</p>
+                <p><i class="fas fa-envelope"></i> studiosdanielsve@gmail.com</p>
+                <p><i class="fas fa-map-marker-alt"></i> Centro de Lima, Peru</p>
+                <div class="social-links">
+                    <a href="https://www.facebook.com/vacanostore.pe" target="_blank"
+                        aria-label="Visitar Facebook de Vacano Store Perú" rel="noopener noreferrer"><i
+                            class="fab fa-facebook-f"></i></a>
+                    <a href="https://www.instagram.com/vacano_store_pe" target="_blank"
+                        aria-label="Visitar Instagram de Vacano Store Perú" rel="noopener noreferrer"><i
+                            class="fab fa-instagram"></i></a>
+                    <a href="https://wa.me/51933450055" target="_blank" aria-label="Contactar por WhatsApp"
+                        rel="noopener noreferrer"><i class="fab fa-whatsapp"></i></a>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <span>&copy; <span id="currentYear"></span> Vacano Store. Todos los derechos reservados. Desarrollado por <a
+                    href="https://github.com/StudiosDanilIs" target="_blank" rel="noopener noreferrer"><i
+                        class="fas fa-heart" style="color: rgb(111, 28, 218);"></i> Studios Daniels</a>.</span>
+        </div>
+    </footer>
+
+    <a href="https://wa.me/51933450055" class="whatsapp-fab" target="_blank" aria-label="Contactar por WhatsApp"
+        rel="noopener noreferrer">
+        <i class="fab fa-whatsapp"></i>
+    </a>
+
+    <button id="scrollToTopBtn" class="scroll-to-top" aria-label="Volver al inicio de la página">
+        <i class="fas fa-arrow-up"></i>
+    </button>
+
+    <div id="productModal" class="modal">
+        <div class="modal-contenido">
+            <span class="cerrar-modal" aria-label="Cerrar ventana de detalles">&times;</span>
+            <div class="galeria-layout">
+                <img id="modal-imagen-principal" src="" alt="Imagen principal del producto">
+                <div class="miniaturas-container">
+                </div>
+            </div>
+            <div class="modal-info-producto">
+                <h2 id="modal-titulo-producto"></h2>
+                <p id="modal-descripcion-producto"></p>
+                <div class="precios-modal">
+                    <span id="modal-precio-original" class="original-price-modal"></span>
+                    <span id="modal-precio-descuento" class="discounted-price-modal"></span>
+                    <span id="modal-descuento-badge" class="descuento-badge-modal"></span>
+                </div>
+                <a href="https://wa.me/51933450055" id="whatsappModalBtn" class="whatsapp-modal-btn" target="_blank"
+                    rel="noopener noreferrer">
+                    <i class="fab fa-whatsapp"></i> Preguntar por WhatsApp (Perú)
+                </a>
+            </div>
         </div>
     </div>
 
+    <div id="mobileNavOverlay" class="mobile-nav-overlay">
+        <span class="close-mobile-menu" id="closeMobileMenu" aria-label="Cerrar menú móvil">&times;</span>
+        <ul>
+            <li><a href="index.html">Inicio</a></li>
+            <li><a href="catalogo.html">Catálogo</a></li>
+            <li><a href="#about">Nosotros</a></li>
+            <li><a href="#contact">Contacto</a></li>
+        </ul>
+        <button id="themeToggleMobile" class="theme-toggle" aria-label="Cambiar tema claro/oscuro (móvil)">
+            <i class="fas fa-sun"></i> Modo Claro
+        </button>
+    </div>
+
+    <script src="js/producto.js"></script>
     <script>
-        // Generador de partículas para el fondo
-        function createParticles() {
-            const particlesContainer = document.getElementById('particles');
-            const particleCount = 30;
-
-            for (let i = 0; i < particleCount; i++) {
-                const particle = document.createElement('div');
-                particle.classList.add('particle');
-
-                // Tamaño aleatorio entre 5px y 20px
-                const size = Math.random() * 15 + 5;
-                particle.style.width = `${size}px`;
-                particle.style.height = `${size}px`;
-
-                // Posición inicial aleatoria
-                particle.style.left = `${Math.random() * 100}%`;
-                particle.style.top = `${Math.random() * 100 + 100}%`;
-
-                // Opacidad aleatoria
-                particle.style.opacity = Math.random() * 0.5 + 0.1;
-
-                // Duración de animación aleatoria entre 10s y 30s
-                const duration = Math.random() * 20 + 10;
-                particle.style.animationDuration = `${duration}s`;
-
-                // Retraso inicial aleatorio
-                particle.style.animationDelay = `${Math.random() * 5}s`;
-
-                particlesContainer.appendChild(particle);
-            }
-        }
-
-        document.addEventListener('DOMContentLoaded', () => {
-            createParticles();
-
-            const preloader = document.getElementById('preloader');
-            const loadingText = document.getElementById('loading-text');
-            const mainContent = document.getElementById('main-content');
-
-            function hidePreloader() {
-                preloader.style.opacity = '0';
-                setTimeout(() => {
-                    preloader.style.display = 'none';
-                    mainContent.style.display = 'block';
-                    document.body.style.overflow = '';
-                }, 700);
-            }
-
-            // Simulamos un tiempo de carga
-            setTimeout(() => {
-                loadingText.textContent = 'Redirigiendo...';
-                
-                // Redirigimos después de 1 segundo más
-                setTimeout(() => {
-                    window.location.href = "inicio.html";
-                }, 1000);
-                
-                // Opcional: también puedes mostrar el contenido principal en lugar de redirigir
-                // hidePreloader();
-            }, 2000); // 2 segundos de animación de carga
-        });
+        // Establecer el año actual en el footer
+        document.getElementById('currentYear').textContent = new Date().getFullYear();
     </script>
 </body>
 
