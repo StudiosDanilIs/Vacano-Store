@@ -252,7 +252,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const path = window.location.pathname;
 
         // Renderizar para inicio.html
-        if (path.includes('/peru/inicio.html') || path === '/') {
+        if (path.includes('/index.html') || path === '/') {
             const featuredGrid = document.getElementById('featuredProductsGrid');
             const offersGrid = document.getElementById('offerProductsGrid');
 
@@ -268,7 +268,7 @@ document.addEventListener('DOMContentLoaded', () => {
         }
 
         // Renderizar para catalogo.html
-        if (path.endsWith('/peru/catalogo.html') || document.getElementById('allProductsGrid')) {
+        if (path.endsWith('/catalogo.html') || document.getElementById('allProductsGrid')) {
             const allProductsGrid = document.getElementById('allProductsGrid');
             if (allProductsGrid) {
                 renderProducts(allProductsGrid, productsData, 'producto-card');

@@ -415,7 +415,6 @@
         <p>Experimenta la moda sin límites. Selecciona tu país para explorar nuestro catálogo exclusivo y ofertas
             adaptadas a tu región.</p>
         <div class="country-selection">
-            <a href="venezuela/inicio.html"><span class="flag-emoji">🇻🇪</span>Venezuela</a>
             <a href="peru/inicio.html"><span class="flag-emoji">🇵🇪</span>Perú</a>
         </div>
     </div>
@@ -464,15 +463,14 @@
 
             // Mapeo de códigos de país a URLs
             const countryRedirects = {
-                'VEN': { url: 'venezuela/inicio.html', name: 'Venezuela', emoji: '🇻🇪' },
                 'PER': { url: 'peru/inicio.html', name: 'Perú', emoji: '🇵🇪' },
             };
 
             // Redirección por defecto
             const defaultRedirect = {
-                url: 'venezuela/inicio.html',
-                name: 'Venezuela (por defecto)',
-                emoji: '🇻🇪'
+                url: 'inicio.html',
+                name: 'Peru (por defecto)',
+                emoji: '🇵🇪'
             };
 
             function hidePreloader() {
@@ -546,10 +544,8 @@
                 let target = null;
                 let finalCountryCode = null;
 
-                if (countryCode2Letter === 'VE') {
-                    finalCountryCode = 'VEN';
-                } else if (countryCode2Letter === 'PE') {
-                    finalCountryCode = 'PER';
+                if (countryCode2Letter === 'PE') {
+                    finalCountryCode = 'PE';
                 }
 
                 if (finalCountryCode && countryRedirects[finalCountryCode]) {
@@ -564,7 +560,7 @@
 
                 setTimeout(() => {
                     window.location.href = target.url;
-                }, 4000);
+                }, 3000);
             }
 
             handleRedirection();
