@@ -11,27 +11,17 @@
         /* Definición de variables CSS para los colores */
         :root {
             --color-primary-dark: #0a2463;
-            /* Azul oscuro más intenso */
             --color-primary-light: #3e92cc;
-            /* Azul claro vibrante */
             --color-secondary-dark: #1e3a8a;
-            /* Azul marino */
             --color-secondary-light: #5e7ce2;
-            /* Azul eléctrico */
             --color-accent: #00b4d8;
-            /* Azul turquesa para acentos */
             --color-text-dark: #1f2937;
-            /* Gris oscuro para texto principal */
             --color-text-light: #f8f9fa;
-            /* Blanco roto para texto claro */
             --color-bg-light: #f9fafb;
-            /* Fondo muy claro */
             --color-bg-white: #ffffff;
-            /* Blanco puro */
             --color-shadow: rgba(0, 0, 0, 0.15);
             --color-border: #e5e7eb;
             --color-button-hover: #e0f2fe;
-            /* Azul muy suave para hover */
 
             /* Nuevas variables para el degradado del fondo */
             --gradient-start: #03045e;
@@ -44,7 +34,6 @@
         body {
             margin: 0;
             font-family: 'Poppins', sans-serif;
-            /* Fondo animado con múltiples capas */
             background: linear-gradient(-45deg,
                     var(--gradient-start),
                     var(--gradient-mid),
@@ -154,21 +143,6 @@
             margin-bottom: 15px;
         }
 
-        #loading-region {
-            font-size: 1.2em;
-            font-weight: 300;
-            opacity: 0.8;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-
-        #loading-icon-display {
-            font-size: 1.5em;
-            margin-left: 10px;
-            line-height: 1;
-        }
-
         /* --- Estilos del Contenido Principal --- */
         .container {
             max-width: 700px;
@@ -184,39 +158,7 @@
             backdrop-filter: blur(8px);
             -webkit-backdrop-filter: blur(8px);
             border: 1px solid rgba(255, 255, 255, 0.2);
-        }
-
-        /* Efecto de borde luminoso */
-        .container::after {
-            content: '';
-            position: absolute;
-            top: -2px;
-            left: -2px;
-            right: -2px;
-            bottom: -2px;
-            background: linear-gradient(45deg,
-                    var(--color-accent),
-                    var(--color-primary-light),
-                    var(--color-secondary-light));
-            z-index: -1;
-            border-radius: 18px;
-            animation: borderGlow 3s linear infinite;
-            opacity: 0.7;
-            filter: blur(5px);
-        }
-
-        @keyframes borderGlow {
-            0% {
-                opacity: 0.5;
-            }
-
-            50% {
-                opacity: 0.8;
-            }
-
-            100% {
-                opacity: 0.5;
-            }
+            display: none; /* Ocultamos el contenido principal inicialmente */
         }
 
         @keyframes fadeIn {
@@ -404,9 +346,7 @@
 
     <div id="preloader">
         <div class="spinner"></div>
-        <div id="loading-text">Cargando</div>
-        <div id="loading-region">Detectando tu región...</div>
-        <div id="loading-icon-display"></div>
+        <div id="loading-text">Cargando...</div>
     </div>
 
     <div class="container" id="main-content">
@@ -415,7 +355,7 @@
         <p>Experimenta la moda sin límites. Selecciona tu país para explorar nuestro catálogo exclusivo y ofertas
             adaptadas a tu región.</p>
         <div class="country-selection">
-            <a href="peru/inicio.html"><span class="flag-emoji">🇵🇪</span>Perú</a>
+            <a href="inicio.html"><span class="flag-emoji">🇵🇪</span>Perú</a>
         </div>
     </div>
 
@@ -457,21 +397,7 @@
 
             const preloader = document.getElementById('preloader');
             const loadingText = document.getElementById('loading-text');
-            const loadingRegion = document.getElementById('loading-region');
-            const loadingIconDisplay = document.getElementById('loading-icon-display');
             const mainContent = document.getElementById('main-content');
-
-            // Mapeo de códigos de país a URLs
-            const countryRedirects = {
-                'PER': { url: 'peru/inicio.html', name: 'Perú', emoji: '🇵🇪' },
-            };
-
-            // Redirección por defecto
-            const defaultRedirect = {
-                url: 'inicio.html',
-                name: 'Peru (por defecto)',
-                emoji: '🇵🇪'
-            };
 
             function hidePreloader() {
                 preloader.style.opacity = '0';
@@ -482,88 +408,18 @@
                 }, 700);
             }
 
-            async function getUserGeolocationCountry() {
-                return new Promise(resolve => {
-                    if (!navigator.geolocation) {
-                        console.warn('Geolocalización no soportada por este navegador.');
-                        return resolve(null);
-                    }
-
-                    navigator.geolocation.getCurrentPosition(
-                        async (position) => {
-                            const lat = position.coords.latitude;
-                            const lon = position.coords.longitude;
-                            console.log(`Ubicación obtenida: Lat ${lat}, Lon ${lon}`);
-
-                            try {
-                                const nominatimUrl = `https://nominatim.openstreetmap.org/reverse?format=json&lat=${lat}&lon=${lon}&zoom=18&addressdetails=1`;
-                                const response = await fetch(nominatimUrl);
-                                const data = await response.json();
-
-                                if (data && data.address && data.address.country_code) {
-                                    return resolve(data.address.country_code.toUpperCase());
-                                }
-                                console.warn('No se pudo obtener el código de país de Nominatim.');
-                                resolve(null);
-                            } catch (error) {
-                                console.error('Error al obtener el país de Nominatim:', error);
-                                resolve(null);
-                            }
-                        },
-                        (error) => {
-                            console.error('Error de geolocalización:', error.message);
-                            if (error.code === error.PERMISSION_DENIED) {
-                                console.warn('El usuario denegó el permiso de geolocalización.');
-                                loadingText.textContent = 'Permiso denegado.';
-                                loadingRegion.textContent = 'Redirigiendo a la tienda por defecto...';
-                                loadingIconDisplay.textContent = '🚫';
-                            } else {
-                                loadingText.textContent = 'Error al detectar.';
-                                loadingRegion.textContent = 'Redirigiendo a la tienda por defecto...';
-                                loadingIconDisplay.textContent = '⚠️';
-                            }
-                            resolve(null);
-                        },
-                        {
-                            enableHighAccuracy: false,
-                            timeout: 5000,
-                            maximumAge: 0
-                        }
-                    );
-                });
-            }
-
-            async function handleRedirection() {
-                loadingText.textContent = 'Cargando';
-                loadingRegion.textContent = 'Pidiendo permiso de ubicación...';
-                loadingIconDisplay.textContent = '📍';
-
-                const countryCode2Letter = await getUserGeolocationCountry();
-                console.log('Código de país detectado (2 letras):', countryCode2Letter);
-
-                let target = null;
-                let finalCountryCode = null;
-
-                if (countryCode2Letter === 'PE') {
-                    finalCountryCode = 'PE';
-                }
-
-                if (finalCountryCode && countryRedirects[finalCountryCode]) {
-                    target = countryRedirects[finalCountryCode];
-                } else {
-                    target = defaultRedirect;
-                }
-
-                loadingText.textContent = 'Cargando...';
-                loadingRegion.textContent = `Redirigiendo a ${target.name}...`;
-                loadingIconDisplay.textContent = target.emoji;
-
+            // Simulamos un tiempo de carga
+            setTimeout(() => {
+                loadingText.textContent = 'Redirigiendo...';
+                
+                // Redirigimos después de 1 segundo más
                 setTimeout(() => {
-                    window.location.href = target.url;
-                }, 3000);
-            }
-
-            handleRedirection();
+                    window.location.href = "inicio.html";
+                }, 1000);
+                
+                // Opcional: también puedes mostrar el contenido principal en lugar de redirigir
+                // hidePreloader();
+            }, 2000); // 2 segundos de animación de carga
         });
     </script>
 </body>
