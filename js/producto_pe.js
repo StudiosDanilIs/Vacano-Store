@@ -251,8 +251,8 @@ document.addEventListener('DOMContentLoaded', () => {
     function loadContent() {
         const path = window.location.pathname;
 
-        // Renderizar para index.html
-        if (path.includes('/peru/index.html') || path === '/') {
+        // Renderizar para inicio.html
+        if (path.includes('/peru/inicio.html') || path === '/') {
             const featuredGrid = document.getElementById('featuredProductsGrid');
             const offersGrid = document.getElementById('offerProductsGrid');
 
