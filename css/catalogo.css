@@ -369,29 +369,29 @@ body.light-mode .ver-detalles-btn {
     .catalogo-grid,
     .collection-grid,
     .offers-grid {
-        grid-template-columns: 1fr;
+        grid-template-columns: repeat(2, 1fr);
         /* Una columna única */
-        gap: 1.5rem;
+        gap: 0.3rem;
     }
 
     .producto-card,
     .collection-card,
     .offer-card {
-        min-height: 350px;
+        min-height: 300px;
         /* Altura mínima aún más compacta */
     }
 
     .producto-image-wrapper,
     .collection-image-wrapper,
     .offer-image-wrapper {
-        height: 200px;
+        height: 160px;
         /* La imagen puede ser un poco más alta en una sola columna */
     }
 
     .producto-info,
     .collection-info,
     .offer-info {
-        padding: 1rem;
+        padding: 0.3rem;
         /* Padding interno reducido */
     }
 }

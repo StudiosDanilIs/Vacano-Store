@@ -1613,6 +1613,11 @@ body.light-mode .modal-contenido {
 
 /* --- Media Query para Móviles Muy Pequeños (máximo 480px de ancho) --- */
 @media (max-width: 480px) {
+    .container {
+        padding: 0 2px;
+        /* Reduce el padding de la contenedor principal */
+    }
+
     .section-title {
         font-size: 1.8rem;
         flex-direction: column;
