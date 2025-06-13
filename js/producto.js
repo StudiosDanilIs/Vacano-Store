@@ -9,10 +9,28 @@ document.addEventListener('DOMContentLoaded', () => {
         "precioOriginal": 69.90, // Precio en soles
         "descuento": 20,
         "imagenes": [
-            "/imagenes/cara1.heic",
-            "/imagenes/atras1.heic",
-            "/imagenes/atras2.heic",
-            "/imagenes/atras3.heic"
+            "/imagenes/cara1.png",
+            "/imagenes/atras1.png",
+            "/imagenes/atras2.png",
+            "/imagenes/atras3.png"
+        ],
+        "stock": 3,
+        "categoria": "Urbano",
+        "destacado": false,
+        "enOferta": true,
+    }, {
+        "id": "gorra-negra-clasica",
+        "nombre": "Gorra Los Angeles",
+        "descripcion": "Gorra negra clásica con logo bordado de Los Angeles. Perfecta para un look casual y urbano.",
+        "descripcion_corta": "Gorra negra con logo Los Angeles bordado. Ideal para un look casual. Disponible en talla única.",
+        "precio": 55.90, // Precio en soles
+        "precioOriginal": 69.90, // Precio en soles
+        "descuento": 20,
+        "imagenes": [
+            "/imagenes/cara1.png",
+            "/imagenes/atras1.png",
+            "/imagenes/atras2.png",
+            "/imagenes/atras3.png"
         ],
         "stock": 3,
         "categoria": "Urbano",
